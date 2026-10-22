@@ -1,7 +1,7 @@
 # Create the GitHub repo and add the agent key
 
 Type: task (HITL)
-Status: claimed
+Status: resolved
 Blocked by: 01
 
 ## Question
@@ -35,10 +35,10 @@ Record the repo URL, the visibility, the secret name, and who has admin.
 
 1. Share `.scratch/workshop/coach/coach-notes.md` with Sander outside git.
 2. ~~Say "commit" and Claude makes the first commit on `main`.~~ Done: `2948514` on `main` (22 Oct), spoiler check re-run clean just before.
-3. **Owner, visibility and plan.** A private org repo on GitHub Free has neither branch protection nor rulesets, so the group bases can only be protected on Team or Pro. Without that, it's a kickoff rule plus the 30-minute check.
-4. **Create the repo and push `main`.** Optionally run `brew install gh` and `gh auth login` (you sign in yourself), and Claude can then create the repo and do steps 5 and 7.
+3. ~~**Owner, visibility and plan.**~~ Decided 22 Oct: Matthias's personal account, private, **GitHub Free**. So there's no branch protection: the group bases rely on the kickoff rule plus the 30-minute check ([How groups work in the repo](13-how-groups-work-in-the-repo.md)).
+4. ~~**Create the repo and push `main`.**~~ Done 22 Oct: Matthias created it and pushed `main` at `5d36e1a`, after it was switched to private (unauthenticated API returns 404).
 5. **Repo settings:** allow merge commits only, don't auto-delete head branches, and create the labels `spec-reviewed` and `epic`.
-6. **Agent key.**
+6. **Agent key.** Matthias creates it later; the pipeline spike waits on it.
    - Create a dedicated Anthropic Console workspace with a spend limit, and a key in it.
    - Add the key as the Actions secret `ANTHROPIC_API_KEY` (`gh secret set ANTHROPIC_API_KEY`; you paste it, so Claude never sees it).
    - Delete the key after the workshop.
@@ -50,3 +50,15 @@ Record the repo URL, the visibility, the secret name, and who has admin.
 - URL: https://github.com/schuyten-raccoons/ai-assisted-dev-workshop (a personal account, not an org).
 - **Visibility: private**, decided by Matthias. It was created public, but the plan names the client, its team and its running audits, so nothing gets pushed until it's private.
 - Consequence for [How groups work in the repo](13-how-groups-work-in-the-repo.md): a private repo on a personal account has no branch protection on GitHub Free, only on Pro. Without Pro, the group bases rely on the kickoff rule plus the 30-minute check. Participants are added as individual collaborators, because personal accounts have no teams.
+
+## Answer
+
+Partly done. The rest moves to the build handoff (22 Oct, Matthias), because none of it is a decision.
+
+- **Repo:** https://github.com/schuyten-raccoons/ai-assisted-dev-workshop, on Matthias's personal account. Private, GitHub Free, so no branch protection. `main` pushed at `5d36e1a`. Admin: Matthias.
+- **Secret name:** `ANTHROPIC_API_KEY`. The key doesn't exist yet.
+- **Carried into the build handoff:**
+  - Matthias creates a spend-capped key in a dedicated Console workspace and adds it as the secret.
+  - Repo settings: merge commits only, no auto-deleting head branches, labels `spec-reviewed` and `epic`.
+  - The eleven participants become collaborators, from Dynatos's participant list.
+  - Share the coach notes with Sander outside git.

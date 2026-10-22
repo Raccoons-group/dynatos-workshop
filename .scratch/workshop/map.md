@@ -4,6 +4,8 @@ Status: wayfinder:map
 
 ## Destination
 
+**Cleared on 22 Oct 2026.** Every ticket is resolved and the fog is empty; handed to `/to-spec`.
+
 A buildable spec for the Dynatos 1.5-day workshop: the agenda with timings and owners, the deck storyline per block, the case brief, the live-deck design (pipeline plus what the reporter skill writes), and the takeaways. Ready to hand to `/to-spec` → `/to-tickets` → build in this turborepo. Target: map cleared by Wed 21 Oct 2026, workshop built by Fri 23 Oct 2026.
 
 ## Notes
@@ -50,6 +52,8 @@ Plan, don't do. The two task tickets (repo scaffold, GitHub repo and key) are th
 ## Decisions so far
 
 <!-- one line per resolved ticket: [title](issues/NN-slug.md): gist -->
+- [Create the GitHub repo and add the agent key](issues/02-create-the-github-repo-and-add-the-agent-key.md): private repo on Matthias's personal account (GitHub Free, so no branch protection), `main` pushed; the key, settings, labels and collaborators move to the build handoff.
+- [Live-deck pipeline spike](issues/15-live-deck-pipeline-spike.md): folded into the build as its first ticket, carrying the agenda's latency budgets and the checks from tickets 13 and 14; waits on the agent key.
 - [Wider practitioner landscape and evidence](issues/05-wider-practitioner-landscape-and-evidence.md): consensus is verification, fixing the harness and shared repo guidance; the evidence says AI amplifies and the bottleneck moves to review; TDD-in-the-loop is contested; keep AGENTS.md short; measure team signals, not volume.
 - [Skill and AGENTS.md portability across tools](issues/06-skill-and-agents-md-portability-across-tools.md): all tools read SKILL.md and AGENTS.md; skills canonical in `.agents/skills/` with generated links into `.claude/skills/`; one root AGENTS.md and no CLAUDE.md; name skills in plain text; Visual Studio/JetBrains Copilot ignore AGENTS.md.
 - [Pocock and Lauren Tan workflows](issues/04-pocock-and-lauren-tan-workflows.md): Pocock plans up front (grill → spec → tickets → implement/tdd → review → PR), Tan goes depth-first with code as the spec, a useful contrast; groups use `/grill-with-docs`, not wayfinder; one checkout per participant; skills v1.3 renamed CONTEXT.md to GLOSSARY.md.
@@ -70,7 +74,7 @@ Plan, don't do. The two task tickets (repo scaffold, GitHub repo and key) are th
 
 ## Not yet specified
 
-- **Rehearsal and fallbacks.** A dry run of the full day, a fallback for when CI or the wifi is down, and rate limits with eleven people running agents. The dry run should also settle the cross-tool unknowns from the portability research: duplicate skill listing in VS Code and Cursor, Windows junctions without admin rights, and the VS Code Claude harness.
+Nothing left in the fog.
 
 ## Out of scope
 
@@ -78,3 +82,4 @@ Plan, don't do. The two task tickets (repo scaffold, GitHub repo and key) are th
 - **Participant licences and tokens.** Dynatos arranges these.
 - **Working on Dynatos's own codebases.** The case is our own neutral repo, which keeps customer data and the running ISO audits out of play.
 - **Route33 (Cronos).** Raised in the intake, but evaluating a specific vendor platform isn't what this workshop is for.
+- **Rehearsal and fallbacks.** The dry run happens after the build, beyond this map's destination (a buildable spec); moved out on 22 Oct. Its checklist goes into the build handoff instead: the cross-tool unknowns from [Skill and AGENTS.md portability across tools](issues/06-skill-and-agents-md-portability-across-tools.md), the dry-run checks of the cut script from [How groups work in the repo](issues/13-how-groups-work-in-the-repo.md), and the risks for the dry run in [the agenda](assets/agenda.md).
