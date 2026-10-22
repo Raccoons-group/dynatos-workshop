@@ -34,7 +34,7 @@ Record the repo URL, the visibility, the secret name, and who has admin.
 **Checklist for Matthias** (now includes what [How groups work in the repo](13-how-groups-work-in-the-repo.md) added)
 
 1. Share `.scratch/workshop/coach/coach-notes.md` with Sander outside git.
-2. Say "commit" and Claude makes the first commit on `main`.
+2. ~~Say "commit" and Claude makes the first commit on `main`.~~ Done: `2948514` on `main` (22 Oct), spoiler check re-run clean just before.
 3. **Owner, visibility and plan.** A private org repo on GitHub Free has neither branch protection nor rulesets, so the group bases can only be protected on Team or Pro. Without that, it's a kickoff rule plus the 30-minute check.
 4. **Create the repo and push `main`.** Optionally run `brew install gh` and `gh auth login` (you sign in yourself), and Claude can then create the repo and do steps 5 and 7.
 5. **Repo settings:** allow merge commits only, don't auto-delete head branches, and create the labels `spec-reviewed` and `epic`.
@@ -44,3 +44,9 @@ Record the repo URL, the visibility, the secret name, and who has admin.
    - Delete the key after the workshop.
 7. **Write access for all eleven participants** before Day 1: ask Dynatos for their GitHub usernames.
 8. Record the repo URL, visibility, plan, secret name and admins here, then resolve.
+
+**Repo (22 Oct 2026)**
+
+- URL: https://github.com/schuyten-raccoons/ai-assisted-dev-workshop (a personal account, not an org).
+- **Visibility: private**, decided by Matthias. It was created public, but the plan names the client, its team and its running audits, so nothing gets pushed until it's private.
+- Consequence for [How groups work in the repo](13-how-groups-work-in-the-repo.md): a private repo on a personal account has no branch protection on GitHub Free, only on Pro. Without Pro, the group bases rely on the kickoff rule plus the 30-minute check. Participants are added as individual collaborators, because personal accounts have no teams.
