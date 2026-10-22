@@ -1,0 +1,27 @@
+{
+  "name": "prototype-react-mdx",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 3031",
+    "build": "vite build",
+    "preview": "vite preview --port 3031",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter-tight": "^5.3.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@mdx-js/rollup": "^3.1.1",
+    "@types/mdx": "^2.0.14",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "remark-frontmatter": "^5.0.0",
+    "remark-mdx-frontmatter": "^6.0.0",
+    "typescript": "~6.0.3",
+    "vite": "^8.3.0"
+  }
+}

@@ -1,0 +1,25 @@
+# Node
+node_modules/
+.turbo/
+dist/
+coverage/
+*.tsbuildinfo
+
+# .NET
+bin/
+obj/
+.vs/
+*.user
+
+# Test output
+test-results/
+playwright-report/
+
+# Local
+.env
+.env.*
+!.env.example
+.DS_Store
+
+# Coach notes: never committed until after the Day 2 retrospective
+.scratch/workshop/coach/

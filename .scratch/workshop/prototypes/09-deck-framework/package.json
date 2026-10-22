@@ -1,0 +1,17 @@
+{
+  "name": "prototype-09-deck-framework",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "sync": "node shared/simulate-sync.mjs",
+    "sync:torn": "node shared/simulate-sync.mjs --torn",
+    "slidev": "pnpm --filter prototype-slidev dev",
+    "react": "pnpm --filter prototype-react-mdx dev",
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck"
+  },
+  "devDependencies": {
+    "typescript": "~6.0.3",
+    "vite": "^8.3.4"
+  }
+}

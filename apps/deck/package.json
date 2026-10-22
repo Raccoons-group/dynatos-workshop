@@ -1,0 +1,14 @@
+{
+  "name": "@workshop/deck",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@workshop/tsconfig": "workspace:*",
+    "typescript": "~6.0.3"
+  }
+}

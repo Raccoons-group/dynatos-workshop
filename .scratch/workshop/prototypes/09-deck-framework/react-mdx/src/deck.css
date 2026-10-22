@@ -1,0 +1,88 @@
+/* PROTOTYPE (ticket 09). The deck shell around the brand CSS. */
+html,
+body,
+#root {
+  margin: 0;
+  height: 100%;
+  background: #000;
+}
+
+.deck-box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.deck-canvas {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1000px;
+  height: 562.5px;
+}
+
+.deck-audience {
+  height: 100vh;
+}
+
+.deck-presenter {
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 16px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr auto;
+  gap: 16px;
+  color: #fff;
+  font-family: var(--rac-font);
+  background: #111;
+}
+.deck-presenter > * {
+  min-width: 0;
+  min-height: 0;
+}
+.p-current {
+  grid-row: 1 / 3;
+}
+.p-next {
+  position: relative;
+  color: var(--rac-muted);
+}
+.p-notes {
+  overflow: auto;
+  white-space: pre-wrap;
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.4;
+}
+.p-bar {
+  grid-column: 1 / 3;
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-variant-numeric: tabular-nums;
+  color: var(--rac-muted);
+}
+
+@page {
+  size: 1000px 562.5px;
+  margin: 0;
+}
+.deck-print .deck-page {
+  position: relative;
+  width: 1000px;
+  height: 562.5px;
+  break-after: page;
+  overflow: hidden;
+}
+@media print {
+  html,
+  body,
+  #root {
+    height: auto;
+  }
+  * {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}
