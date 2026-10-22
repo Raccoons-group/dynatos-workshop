@@ -94,7 +94,7 @@ These are listed in the asset's §10:
 
 ### Glossary
 
-Added **Pair**, **Plan owner**, **Takeaway repo** and **Fix level** to [CONTEXT.md](../../CONTEXT.md).
+Added **Pair**, **Plan owner**, **Takeaway repo** and **Fix level** to [GLOSSARY.md](../GLOSSARY.md).
 
 ### Affects
 

@@ -75,7 +75,7 @@ Script: [assets/demo-script.md](../assets/demo-script.md). Grilled with Matthias
   - Red-green at the menu endpoint: "unknown, not an empty list". The tautological test next to it is prepared and never committed.
   - On 63, the repeated mistake goes to the types rung.
 - **When a segment can't run live** (Q10): a recording of each segment, a phone hotspot, and a coach's own subscription.
-- **Glossary:** in [CONTEXT.md](../../CONTEXT.md), **Wall** now says the demo card appears only on the talk's slides (Q7′), and **Fallback tag** is new (Q16).
+- **Glossary:** in [GLOSSARY.md](../GLOSSARY.md), **Wall** now says the demo card appears only on the talk's slides (Q7′), and **Fallback tag** is new (Q16).
 
 **Affects**
 

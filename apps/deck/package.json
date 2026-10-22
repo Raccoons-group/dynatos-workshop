@@ -4,11 +4,27 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "tsc",
-    "typecheck": "tsc --noEmit"
+    "dev": "slidev --port 3030 --open false",
+    "build": "slidev build",
+    "export": "slidev export --with-clicks --output dist/deck.pdf --executable-path \"${CHROME_PATH:-/Applications/Google Chrome.app/Contents/MacOS/Google Chrome}\"",
+    "typecheck": "vue-tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter-tight": "^5.3.0",
+    "@slidev/cli": "^53.0.0",
+    "vue": "^3.5.44"
   },
   "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@vitejs/plugin-vue": "^6.0.10",
+    "@vue/test-utils": "^2.5.1",
     "@workshop/tsconfig": "workspace:*",
-    "typescript": "~6.0.3"
+    "happy-dom": "^21.0.4",
+    "playwright-chromium": "^1.64.1",
+    "typescript": "~6.0.3",
+    "vite": "^8.3.5",
+    "vitest": "^5.0.5",
+    "vue-tsc": "^3.3.13"
   }
 }

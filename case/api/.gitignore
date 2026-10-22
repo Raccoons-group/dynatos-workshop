@@ -1,0 +1,7 @@
+# The SQLite database is rebuilt from the seed on every start
+*.db
+*.db-shm
+*.db-wal
+
+# Build output of pnpm dev, kept apart so tests can build while the API runs
+.dev/

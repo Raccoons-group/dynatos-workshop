@@ -1,0 +1,285 @@
+/* Raccoons dark tokens (from the raccoons-deck brand skill) on a 1000 × 562.5 px canvas:
+   100 px = 1 in, so 1 pt = 1.389 px. Plain CSS, so it doesn't depend on Slidev. */
+
+:root {
+  --rac-bg: #1a1a1a;
+  --rac-surf: #2a2a2a;
+  --rac-ink: #ffffff;
+  --rac-muted: #9b9b9b;
+  --rac-line: #ffffff;
+  --rac-g434: #434343;
+  --rac-g666: #666666;
+  --rac-font: "Inter Tight Variable", "Inter Tight", system-ui, sans-serif;
+}
+
+.rac-slide {
+  position: absolute;
+  inset: 0;
+  background: var(--rac-bg);
+  color: var(--rac-ink);
+  font-family: var(--rac-font);
+  font-weight: 300;
+  overflow: hidden;
+}
+
+/* Titles: 19 pt Light, ending in a bold full stop. Write the title without it:
+   `**.**` straight after a word isn't bold in CommonMark, so the CSS adds it. */
+.rac-slide h1 {
+  margin: 0;
+  font-size: 26.4px;
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+.rac-slide h1::after {
+  content: ".";
+  font-weight: 700;
+}
+.rac-slide h1 strong {
+  font-weight: 700;
+}
+
+/* Frame furniture, on every slide. */
+.rac-wordmark {
+  position: absolute;
+  left: 34px;
+  top: 524.2px;
+  width: 175.8px;
+  height: 14.6px;
+}
+.rac-head {
+  position: absolute;
+  left: 955.6px;
+  top: 519px;
+  width: 33px;
+  height: 25.65px;
+}
+
+/* The card: surf fill, barely rounded, a straight white hairline on the left edge. */
+.rac-card {
+  position: relative;
+  background: var(--rac-surf);
+  border-left: 1px solid var(--rac-line);
+  border-radius: 0 4px 4px 0;
+}
+
+/* Layout `cover`: one big title, centred low, like the colleague's opener. */
+.rac-cover h1 {
+  position: absolute;
+  left: 34px;
+  right: 34px;
+  top: 210px;
+  font-size: 44px;
+  font-weight: 300;
+}
+.rac-cover p {
+  position: absolute;
+  left: 34px;
+  top: 290px;
+  margin: 0;
+  font-size: 19.4px;
+  color: var(--rac-muted);
+}
+
+/* Layout `title-cards`: title on the left, an ordered list becomes 2 × 2 cards. */
+.rac-title-cards h1 {
+  position: absolute;
+  left: 34px;
+  top: 82px;
+  width: 340px;
+}
+.rac-title-cards ol {
+  position: absolute;
+  left: 401px;
+  top: 71px;
+  width: 565px;
+  height: 413px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 1fr;
+  gap: 12px 11px;
+  counter-reset: card;
+}
+.rac-title-cards li {
+  counter-increment: card;
+  position: relative;
+  background: var(--rac-surf);
+  border-left: 1px solid var(--rac-line);
+  border-radius: 0 4px 4px 0;
+  /* A column, so a card's bold part and its plain part stack instead of sitting side by side. */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 44px;
+  text-align: center;
+  font-size: 19.4px;
+  font-weight: 400;
+  line-height: 1.22;
+}
+.rac-title-cards li strong {
+  font-weight: 600;
+}
+.rac-title-cards li::before {
+  content: counter(card, decimal-leading-zero);
+  position: absolute;
+  left: 15px;
+  top: 13px;
+  font-size: 19.4px;
+  font-weight: 200;
+}
+
+/* Layout `data`: title top-left, a live view fills the content band. */
+.rac-data h1 {
+  position: absolute;
+  left: 34px;
+  top: 30px;
+}
+
+/* The CI badge. */
+.rac-ci {
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 1px 6px;
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 1px var(--rac-line);
+  white-space: nowrap;
+}
+.rac-ci-fail {
+  background: var(--rac-ink);
+  color: var(--rac-bg);
+}
+.rac-ci-none,
+.rac-ci-cancelled {
+  box-shadow: inset 0 0 0 1px var(--rac-g666);
+  color: var(--rac-muted);
+}
+
+/* The wall: one card per group, each with a mini ribbon. */
+.rac-wall {
+  position: absolute;
+  left: 34px;
+  top: 80px;
+  width: 932px;
+  height: 420px;
+  display: grid;
+  grid-template-columns: repeat(var(--rac-cols, 3), minmax(0, 1fr));
+  gap: 12px;
+}
+.rac-wall-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 16px 16px 14px 18px;
+  animation: rac-fresh 2.4s ease-out;
+}
+.rac-wall-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.rac-wall-name {
+  font-size: 19.4px;
+  font-weight: 400;
+}
+.rac-ribbon,
+.rac-threads {
+  display: flex;
+  gap: 3px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.rac-station,
+.rac-threads li {
+  flex: 1;
+  padding: 4px 0;
+  border-radius: 2px;
+  text-align: center;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.rac-station-todo {
+  color: var(--rac-g666);
+  box-shadow: inset 0 0 0 1px var(--rac-g434);
+}
+.rac-station-done {
+  background: var(--rac-g434);
+  color: var(--rac-muted);
+}
+.rac-station-current {
+  background: var(--rac-ink);
+  color: var(--rac-bg);
+  font-weight: 600;
+}
+.rac-gate {
+  flex: none;
+  align-self: center;
+  font-size: 12px;
+  color: var(--rac-g666);
+}
+.rac-gate-passed {
+  color: var(--rac-ink);
+}
+.rac-threads li {
+  color: var(--rac-g666);
+  box-shadow: inset 0 0 0 1px var(--rac-g434);
+}
+.rac-threads li.rac-thread-lit {
+  color: var(--rac-ink);
+  box-shadow: inset 0 0 0 1px var(--rac-line);
+}
+.rac-wall-now {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+.rac-wall-notable {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--rac-muted);
+  overflow-wrap: anywhere;
+}
+.rac-wall-foot {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  font-size: 10.5px;
+  color: var(--rac-muted);
+}
+.rac-stale {
+  color: var(--rac-ink);
+  font-weight: 500;
+}
+.rac-wall-empty {
+  position: absolute;
+  left: 34px;
+  top: 240px;
+  font-size: 19.4px;
+  color: var(--rac-muted);
+}
+
+@keyframes rac-fresh {
+  from {
+    background: var(--rac-g666);
+  }
+  to {
+    background: var(--rac-surf);
+  }
+}
+
+/* Print and PDF export: no mount animations, so nothing is captured mid-flash. */
+@media print {
+  .rac-wall-card {
+    animation: none;
+  }
+}

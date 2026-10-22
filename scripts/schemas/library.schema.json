@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "library.schema.json",
+  "title": "Library list",
+  "description": "The Day 2 skill lab's library list, as library.json on the live-deck-data branch. scripts/library-list.mjs computes it without a model from the open and merged PRs into main that touch .agents/skills/ or use the lab PR template. It never holds a person's name.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "updatedAt", "entries"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "updatedAt": { "$ref": "#/$defs/timestamp" },
+    "entries": {
+      "description": "One per lab PR, in the order the PRs were opened.",
+      "type": "array",
+      "maxItems": 40,
+      "items": { "$ref": "#/$defs/entry" }
+    }
+  },
+  "$defs": {
+    "timestamp": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}"
+    },
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pr",
+        "name",
+        "kind",
+        "fixLevel",
+        "catches",
+        "toolsPassed",
+        "state",
+        "openedAt"
+      ],
+      "properties": {
+        "pr": { "type": "integer", "minimum": 1 },
+        "name": {
+          "description": "The skill's folder under .agents/skills/, or the PR title for anything else.",
+          "type": "string",
+          "maxLength": 60
+        },
+        "kind": {
+          "description": "skill: the PR adds or changes a shared skill. fix: a check, test, type, architecture change or AGENTS.md line.",
+          "enum": ["skill", "fix"]
+        },
+        "fixLevel": {
+          "description": "From the PR's Fix level section. Null when the PR doesn't say.",
+          "type": ["string", "null"],
+          "enum": [
+            "architecture",
+            "types",
+            "check",
+            "test",
+            "AGENTS.md",
+            "skill",
+            null
+          ]
+        },
+        "catches": {
+          "description": "A skill's description (first line), or the PR's What it catches line.",
+          "type": "string",
+          "maxLength": 140
+        },
+        "toolsPassed": {
+          "description": "The tools whose should-fire prompts in TESTS.md are all ticked. Empty for a fix.",
+          "type": "array",
+          "maxItems": 6,
+          "items": { "type": "string", "maxLength": 30 }
+        },
+        "state": { "enum": ["open", "merged"] },
+        "openedAt": { "$ref": "#/$defs/timestamp" }
+      }
+    }
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "judgements.schema.json",
+  "title": "Reporter judgements",
+  "description": "What the reporter skill writes about the pull request of one group. It describes and never advises, never names a person, never compares groups, and never writes a number: counts come from facts. Every decision, example, slice and mistake points to its evidence in the input.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "now",
+    "notable",
+    "decisions",
+    "acceptanceExamples",
+    "slices",
+    "reviewHeadline",
+    "agentGotWrong"
+  ],
+  "properties": {
+    "now": {
+      "description": "One line on what the group is working on.",
+      "type": "string",
+      "maxLength": 100
+    },
+    "notable": {
+      "description": "One descriptive observation about how the group works. Never advice.",
+      "type": "string",
+      "maxLength": 140
+    },
+    "decisions": {
+      "description": "The seven open points of the epic, read from the spec.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "join",
+        "deadline",
+        "multipleRestaurants",
+        "editRights",
+        "splitBill",
+        "minimumOrderAndFee",
+        "kitchenPerPerson"
+      ],
+      "properties": {
+        "join": { "$ref": "#/$defs/decision" },
+        "deadline": { "$ref": "#/$defs/decision" },
+        "multipleRestaurants": { "$ref": "#/$defs/decision" },
+        "editRights": { "$ref": "#/$defs/decision" },
+        "splitBill": { "$ref": "#/$defs/decision" },
+        "minimumOrderAndFee": { "$ref": "#/$defs/decision" },
+        "kitchenPerPerson": { "$ref": "#/$defs/decision" }
+      }
+    },
+    "acceptanceExamples": {
+      "description": "The acceptance examples in the spec, each matched to a test name from facts.testsAdded, or null.",
+      "type": "array",
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["example", "test", "evidence"],
+        "properties": {
+          "example": { "type": "string", "maxLength": 140 },
+          "test": { "type": ["string", "null"], "maxLength": 200 },
+          "evidence": { "$ref": "#/$defs/evidence" }
+        }
+      }
+    },
+    "slices": {
+      "description": "The tickets of the group as vertical slices, in the order the group gave them.",
+      "type": "array",
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "hasProof", "status", "evidence"],
+        "properties": {
+          "name": { "type": "string", "maxLength": 80 },
+          "hasProof": { "type": "boolean" },
+          "status": { "enum": ["planned", "building", "shipped"] },
+          "evidence": { "$ref": "#/$defs/evidence" }
+        }
+      }
+    },
+    "reviewHeadline": {
+      "description": "The review finding that mattered most, as review.md states it, or null before any review.",
+      "type": ["string", "null"],
+      "maxLength": 140
+    },
+    "agentGotWrong": {
+      "description": "Up to three mistakes from \"Observed by the agent\" in the how-we-worked note.",
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["item", "twice", "evidence"],
+        "properties": {
+          "item": { "type": "string", "maxLength": 120 },
+          "twice": { "type": "boolean" },
+          "evidence": { "$ref": "#/$defs/evidence" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["call", "line", "evidence"],
+      "properties": {
+        "call": { "enum": ["in", "out", "open"] },
+        "line": { "type": "string", "maxLength": 80 },
+        "evidence": { "$ref": "#/$defs/evidence" }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["file", "quote"],
+        "properties": {
+          "file": { "type": "string", "maxLength": 200 },
+          "quote": { "type": "string", "maxLength": 140 }
+        }
+      }
+    }
+  }
+}

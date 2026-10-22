@@ -1,0 +1,117 @@
+/* The Day 2 live views: the library list and the action-plan grid. They reuse the threads, status and exhibit
+   styles from raccoons.css, slides.css and group-views.css, and add only their own layout. */
+
+/* The library list: a row per lab PR. */
+.rac-library,
+.rac-plan {
+  position: absolute;
+  left: 34px;
+  top: 80px;
+  width: 932px;
+}
+.rac-library-grid {
+  display: grid;
+  grid-template-columns: 34px 150px 92px minmax(0, 1fr) 232px 62px;
+  column-gap: 12px;
+  row-gap: 7px;
+  align-items: center;
+  font-size: 11.5px;
+  line-height: 1.3;
+}
+.rac-library-head,
+.rac-plan-head {
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--rac-g434);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rac-muted);
+  align-self: end;
+}
+.rac-library-name {
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+.rac-library-level {
+  color: var(--rac-muted);
+}
+.rac-library-catches {
+  overflow-wrap: anywhere;
+}
+.rac-library-grid .rac-threads li {
+  padding: 3px 0;
+  font-size: 8px;
+}
+.rac-library-grid .rac-status {
+  margin-right: 0;
+}
+
+/* The action-plan grid: the four rows down the side, quick wins and longer steps across. */
+.rac-plan-grid {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: 12px;
+  row-gap: 8px;
+  font-size: 11px;
+  line-height: 1.3;
+}
+.rac-plan-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 5px;
+}
+.rac-plan-label {
+  font-size: 15px;
+}
+.rac-plan-by {
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--rac-muted);
+}
+.rac-plan-cell {
+  margin: 0;
+  padding: 6px 8px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: var(--rac-surf);
+  border-radius: 2px;
+  min-height: 24px;
+}
+.rac-plan-cell li {
+  position: relative;
+  padding-left: 14px;
+  overflow-wrap: anywhere;
+}
+.rac-plan-cell li::before {
+  content: "○";
+  position: absolute;
+  left: 0;
+  color: var(--rac-g666);
+}
+.rac-plan-cell li.rac-plan-chosen::before {
+  content: "●";
+  color: var(--rac-ink);
+}
+.rac-plan-why {
+  display: block;
+  font-size: 9.5px;
+  color: var(--rac-muted);
+}
+.rac-plan-voted .rac-plan-cell li:not(.rac-plan-chosen) {
+  color: var(--rac-g666);
+}
+.rac-plan-voted .rac-plan-cell li:not(.rac-plan-chosen) .rac-plan-why {
+  color: var(--rac-g666);
+}
+.rac-plan-waiting {
+  grid-column: span 2;
+  margin: 0;
+  padding: 6px 8px;
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 1px var(--rac-g434);
+  color: var(--rac-g666);
+}

@@ -10,7 +10,7 @@ A buildable spec for the Dynatos 1.5-day workshop: the agenda with timings and o
 
 ## Notes
 
-**Domain.** A hands-on workshop on AI-assisted development for the Dynatos (Routty) dev team. Day 1 is a full day and Day 2 a half day, in 's-Hertogenbosch. Eleven participants, developers plus two product owners, spread over the Netherlands, Slovakia, Poland and Norway, so everything is in English. Their stack is a .NET backend with a React frontend. Matthias and Sander present and coach. Three groups of three or four, mixed by experience and product. Vocabulary lives in [CONTEXT.md](../../CONTEXT.md).
+**Domain.** A hands-on workshop on AI-assisted development for the Dynatos (Routty) dev team. Day 1 is a full day and Day 2 a half day, in 's-Hertogenbosch. Eleven participants, developers plus two product owners, spread over the Netherlands, Slovakia, Poland and Norway, so everything is in English. Their stack is a .NET backend with a React frontend. Matthias and Sander present and coach. Three groups of three or four, mixed by experience and product. Vocabulary lives in [GLOSSARY.md](GLOSSARY.md).
 
 **Inputs.** These stay local to Matthias and are deliberately kept out of the repo:
 

@@ -20,7 +20,7 @@
 - **Tools:** Claude Code everywhere, except the review on 57, which runs in Codex CLI. Switch to Copilot CLI if Dynatos's answer on tools points there.
 - **One demo laptop** on the projector, with both CLIs installed and signed in. Nobody swaps HDMI.
 - **Three pushes:** 36, 61, and the learn commit right after the talk. Everything else stays local until the next push.
-- **The demo card is shown only on talk slides,** never on the wall (see **Wall** in [CONTEXT.md](../../CONTEXT.md)).
+- **The demo card is shown only on talk slides,** never on the wall (see **Wall** in [GLOSSARY.md](../GLOSSARY.md)).
 
 ## The story
 
@@ -126,13 +126,13 @@ The agenda leaves names to the coaches, so this script names roles only:
 | 36 | 10:28 | 2 | Specify: the draft PR | Part 1 lead | Claude Code | the spec from 03 | `demo/03-specified` |
 | 37 | 10:30 | 2 | The checkpoint | Checkpoint coach | GitHub, own laptop | the PR from 36 | `demo/03-specified` |
 | 39 | 10:34 | 3 | Slice | Part 1 lead | Claude Code | the same session | `demo/04-sliced` |
-| lunch | before 13:20 | — | Reset | Part 2 lead | `demo-reset.sh` | — | `demo/04-sliced`, pushed |
+| lunch | before 13:20 | — | Reset | Part 2 lead | `pnpm demo:reset` | — | `demo/04-sliced`, pushed |
 | 53 | 13:35 | 5 | Build | Part 2 lead | Claude Code | `demo/04-sliced` | `demo/05-built` |
 | (end of 53) | about 13:40 | — | Start the review | the other coach | Codex CLI | `demo/05-built` | — |
 | 57 | 13:46 | 4 | Review | the other coach | Codex CLI | the run started at 13:40 | `demo/06-reviewed` |
 | 61 | 13:54 | 3 | Ship | Part 2 lead | Claude Code | `demo/06-reviewed` | `demo/07-shipped` |
 | 63 | 13:59 | 3 | Learn | Part 2 lead | Claude Code | 61's push | `demo/08-learned` |
-| after the talk | 14:05–14:20 | — | Push and merge | Part 1 lead | `demo-reset.sh`, GitHub | `demo/08-learned` | — |
+| after the talk | 14:05–14:20 | — | Push and merge | Part 1 lead | `pnpm demo:reset`, GitHub | `demo/08-learned` | — |
 
 The **Starts from** tag is shown in a corner of each demo slide.
 
@@ -169,7 +169,7 @@ The demo laptop starts on a local branch `demo/allergens`, cut from `demo/main`.
 - **Expected:**
   - `open-pr` commits the spec, the stub `case/AGENTS.md` and the note, pushes `demo/allergens`, and opens a **draft** PR into `demo/main` with "Part of #<demo issue>".
   - The demo card appears on the demo slide by 39 (about 10:34), and at the latest by 10:38.
-- **Fallback:** `scripts/demo-reset.sh demo/03-specified`, which opens the draft PR and adds the label.
+- **Fallback:** `pnpm demo:reset demo/03-specified`, which opens the draft PR and adds the label.
 
 **37 · The checkpoint** (10:30, 2 min, the checkpoint coach on their own laptop)
 
@@ -184,7 +184,7 @@ The demo laptop starts on a local branch `demo/allergens`, cut from `demo/main`.
 - **Expected:**
   - The `labeled` event runs the reporter, and the card passes the gate to Slice by 10:38.
   - If `labeled` doesn't trigger, the checkpoint coach re-runs the reporter by hand (`workflow_dispatch`).
-- **Fallback:** `demo-reset.sh demo/03-specified`.
+- **Fallback:** `pnpm demo:reset demo/03-specified`.
 
 **39 · Slice** (10:34, 3 min, Claude Code)
 
@@ -195,7 +195,7 @@ The demo laptop starts on a local branch `demo/allergens`, cut from `demo/main`.
 
 ### Lunch (the Part 2 lead, before 13:20)
 
-1. Run `scripts/demo-reset.sh demo/04-sliced`. It force-pushes, keeps the PR a draft and keeps the label. CI and the reporter run, and lunch hides the latency, so slide 50 shows the card at Slice.
+1. Run `pnpm demo:reset demo/04-sliced`. It force-pushes, keeps the PR a draft and keeps the label. CI and the reporter run, and lunch hides the latency, so slide 50 shows the card at Slice.
 2. Open two terminal tabs at the repo root on `demo/allergens`: Claude Code in one, Codex in the other.
 3. Run a warm `dotnet build`.
 
@@ -232,7 +232,7 @@ The demo laptop starts on a local branch `demo/allergens`, cut from `demo/main`.
   Then it pushes.
 - **Shown:** the PR going ready, and CI starting.
 - **Expected:** the reporter runs read-only after the tests, and the card shows Ship with slice 1 green by slide 65 (about 14:03).
-- **Fallback:** `demo-reset.sh demo/07-shipped`, which force-pushes and marks the PR ready.
+- **Fallback:** `pnpm demo:reset demo/07-shipped`, which force-pushes and marks the PR ready.
 
 **63 · Learn** (13:59, 3 min, Claude Code)
 
@@ -248,14 +248,14 @@ The demo laptop starts on a local branch `demo/allergens`, cut from `demo/main`.
 
 ### After the talk (the Part 1 lead, 14:05–14:20, off stage)
 
-1. Run `scripts/demo-reset.sh demo/08-learned`. It force-pushes over 61's live commit, and the PR stays ready, with the label.
+1. Run `pnpm demo:reset demo/08-learned`. It force-pushes over 61's live commit, and the PR stays ready, with the label.
 2. Once CI is green, merge into `demo/main` with a merge commit. A closed PR triggers no run, so the card keeps its last observation.
 
 ## Fallback tags
 
 The eight tags form **one linear chain**, made in the final rehearsal on `demo/allergens`. After the grep, they're pushed to GitHub, so either coach can restart from their own laptop.
 
-| Tag | Adds | GitHub state that `demo-reset.sh` sets |
+| Tag | Adds | GitHub state that `pnpm demo:reset` sets |
 |---|---|---|
 | `demo/01-read` | `work/demo/read.md` | no PR |
 | `demo/02-explored` | `case/GLOSSARY.md` (Allergen, Allergen info) | no PR |
@@ -268,7 +268,7 @@ The eight tags form **one linear chain**, made in the final rehearsal on `demo/a
 
 During the talk, 05 and 06 are only local jumps, and the PR stays at 04 until 61. The GitHub state in the table applies when a segment restarts from that tag.
 
-**`scripts/demo-reset.sh <tag>`** is coach-only. It lives on `main` and never on the bases. It:
+**`pnpm demo:reset <tag>`** (`scripts/demo-reset.mjs`) is coach-only. It lives on `main` and never on the bases. It:
 
 1. hard-resets `demo/allergens` to the tag and force-pushes it, so CI and the reporter rerun for that commit and the card follows (it may move back)
 2. opens the PR into `demo/main` if it's missing, and sets draft or ready as the table says

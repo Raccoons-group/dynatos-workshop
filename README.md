@@ -4,13 +4,17 @@ A 1.5-day hands-on workshop on AI-assisted development, by Raccoons for the Dyna
 
 ## Layout
 
-| Path                | What                                                                   |
-| ------------------- | ---------------------------------------------------------------------- |
-| `apps/deck`         | The live deck: a web slide deck that updates from the groups' PRs      |
-| `case/`             | The case every group works on (.NET backend, React frontend)           |
-| `packages/tsconfig` | Shared TypeScript config                                               |
-| `CONTEXT.md`        | The words we use for the workshop                                      |
-| `.scratch/workshop` | How this workshop was planned: the map, its tickets and research notes |
+| Path                | What                                                                                          |
+| ------------------- | --------------------------------------------------------------------------------------------- |
+| `apps/deck`         | The live deck: a web slide deck that updates from the groups' PRs                             |
+| `case/`             | The case every group works on (.NET backend, React frontend)                                  |
+| `AGENTS.md`         | How agents work in this repo; every tool reads it                                             |
+| `REVIEW.md`         | What a reviewer, human or agent, checks                                                       |
+| `.agents/skills`    | The shared skill library, linked into `.claude/skills` for Claude Code                        |
+| `docs/`             | The issue tracker and domain config for agents, and the AGENTS.md template                    |
+| `scripts/`          | The link script, the cross-tool CI guard, and their tests                                     |
+| `packages/tsconfig` | Shared TypeScript config                                                                      |
+| `.scratch/workshop` | How this workshop was planned: the map, its tickets, research notes and the workshop glossary |
 
 ## Requirements
 
@@ -21,9 +25,11 @@ A 1.5-day hands-on workshop on AI-assisted development, by Raccoons for the Dyna
 ## Commands
 
 ```bash
-pnpm install
+pnpm install        # also links the shared skills for Claude Code
+pnpm setup:check    # checks your machine for the workshop, with a fix for each problem
 pnpm build
 pnpm dev
 pnpm test
+pnpm skills:check
 pnpm format
 ```

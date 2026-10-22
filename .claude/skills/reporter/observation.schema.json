@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "observation.schema.json",
+  "title": "Observation",
+  "description": "What the live deck knows about one group's pull request at one push. The publish job adds the envelope, the prep script computes the facts without the model, and the reporter skill writes the judgements.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "group",
+    "pr",
+    "sha",
+    "reportedAt",
+    "schemaVersion",
+    "facts",
+    "judgements"
+  ],
+  "properties": {
+    "group": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+    "pr": { "type": "integer", "minimum": 1 },
+    "sha": { "type": "string", "pattern": "^[0-9a-f]{7,40}$" },
+    "reportedAt": { "$ref": "#/$defs/timestamp" },
+    "schemaVersion": { "const": 1 },
+    "facts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "phase",
+        "draft",
+        "specReviewedAt",
+        "ci",
+        "firstGreenAt",
+        "artifacts",
+        "skillsWritten",
+        "areasTouched",
+        "testsAdded",
+        "review",
+        "lastPushAt"
+      ],
+      "properties": {
+        "phase": {
+          "enum": [
+            "Exploring",
+            "Specifying",
+            "Spec reviewed",
+            "Slicing",
+            "Building",
+            "Reviewing",
+            "PR ready"
+          ]
+        },
+        "draft": { "type": "boolean" },
+        "specReviewedAt": { "$ref": "#/$defs/timestampOrNull" },
+        "ci": {
+          "oneOf": [
+            { "type": "null" },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["result", "at"],
+              "properties": {
+                "result": { "enum": ["pass", "fail", "cancelled"] },
+                "at": { "$ref": "#/$defs/timestamp" }
+              }
+            }
+          ]
+        },
+        "firstGreenAt": { "$ref": "#/$defs/timestampOrNull" },
+        "artifacts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "agentsMd",
+            "glossary",
+            "spec",
+            "tickets",
+            "review",
+            "howWeWorked"
+          ],
+          "properties": {
+            "agentsMd": { "$ref": "#/$defs/artifact" },
+            "glossary": { "$ref": "#/$defs/artifact" },
+            "spec": { "$ref": "#/$defs/artifact" },
+            "tickets": { "$ref": "#/$defs/artifact" },
+            "review": { "$ref": "#/$defs/artifact" },
+            "howWeWorked": { "$ref": "#/$defs/artifact" }
+          }
+        },
+        "skillsWritten": {
+          "type": "array",
+          "maxItems": 20,
+          "items": { "type": "string", "maxLength": 64 }
+        },
+        "areasTouched": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "api",
+            "web",
+            "apiTests",
+            "webTests",
+            "agentContext",
+            "workingOut"
+          ],
+          "properties": {
+            "api": { "type": "boolean" },
+            "web": { "type": "boolean" },
+            "apiTests": { "type": "boolean" },
+            "webTests": { "type": "boolean" },
+            "agentContext": { "type": "boolean" },
+            "workingOut": { "type": "boolean" }
+          }
+        },
+        "testsAdded": {
+          "type": "array",
+          "maxItems": 100,
+          "items": { "type": "string", "maxLength": 200 }
+        },
+        "review": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["rounds", "findings"],
+          "properties": {
+            "rounds": { "type": "integer", "minimum": 0 },
+            "findings": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["actOn", "consider", "noted", "dismissed"],
+              "properties": {
+                "actOn": { "type": "integer", "minimum": 0 },
+                "consider": { "type": "integer", "minimum": 0 },
+                "noted": { "type": "integer", "minimum": 0 },
+                "dismissed": { "type": "integer", "minimum": 0 }
+              }
+            }
+          }
+        },
+        "lastPushAt": { "$ref": "#/$defs/timestamp" }
+      }
+    },
+    "judgements": { "$ref": "judgements.schema.json" }
+  },
+  "$defs": {
+    "timestamp": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}"
+    },
+    "timestampOrNull": {
+      "oneOf": [{ "type": "null" }, { "$ref": "#/$defs/timestamp" }]
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["present", "firstSeenAt", "lastChangedAt"],
+      "properties": {
+        "present": { "type": "boolean" },
+        "firstSeenAt": { "$ref": "#/$defs/timestampOrNull" },
+        "lastChangedAt": { "$ref": "#/$defs/timestampOrNull" }
+      }
+    }
+  }
+}

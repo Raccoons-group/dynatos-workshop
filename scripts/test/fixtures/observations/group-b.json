@@ -1,0 +1,130 @@
+{
+  "group": "group-b",
+  "pr": 14,
+  "sha": "a93d07b",
+  "reportedAt": "2026-10-27T14:38:51+01:00",
+  "schemaVersion": 1,
+  "facts": {
+    "phase": "Specifying",
+    "draft": true,
+    "specReviewedAt": null,
+    "ci": { "result": "pass", "at": "2026-10-27T14:37:40+01:00" },
+    "firstGreenAt": null,
+    "artifacts": {
+      "agentsMd": {
+        "present": true,
+        "firstSeenAt": "2026-10-27T13:30:00+01:00",
+        "lastChangedAt": "2026-10-27T13:30:00+01:00"
+      },
+      "glossary": {
+        "present": false,
+        "firstSeenAt": null,
+        "lastChangedAt": null
+      },
+      "spec": {
+        "present": true,
+        "firstSeenAt": "2026-10-27T14:15:00+01:00",
+        "lastChangedAt": "2026-10-27T14:36:00+01:00"
+      },
+      "tickets": {
+        "present": false,
+        "firstSeenAt": null,
+        "lastChangedAt": null
+      },
+      "review": {
+        "present": false,
+        "firstSeenAt": null,
+        "lastChangedAt": null
+      },
+      "howWeWorked": {
+        "present": false,
+        "firstSeenAt": null,
+        "lastChangedAt": null
+      }
+    },
+    "skillsWritten": [],
+    "areasTouched": {
+      "api": false,
+      "web": false,
+      "apiTests": true,
+      "webTests": false,
+      "agentContext": true,
+      "workingOut": true
+    },
+    "testsAdded": ["Placing_a_group_order_keeps_each_persons_lines"],
+    "review": {
+      "rounds": 0,
+      "findings": { "actOn": 0, "consider": 0, "noted": 0, "dismissed": 0 }
+    },
+    "lastPushAt": "2026-10-27T14:37:05+01:00"
+  },
+  "judgements": {
+    "now": "Pinning today's ordering behaviour with a characterization test",
+    "notable": "Wrote a characterization test before touching anything the spec changes",
+    "decisions": {
+      "join": {
+        "call": "in",
+        "line": "Shareable link with the order id",
+        "evidence": [
+          { "file": "work/group-b/spec.md", "quote": "Join by link." }
+        ]
+      },
+      "deadline": {
+        "call": "open",
+        "line": "Fixed 11:30 or host-chosen, not decided",
+        "evidence": [
+          {
+            "file": "work/group-b/spec.md",
+            "quote": "Deadline: 11:30? or host picks"
+          }
+        ]
+      },
+      "multipleRestaurants": {
+        "call": "out",
+        "line": "Out for now",
+        "evidence": [{ "file": "work/group-b/spec.md", "quote": "Not in v1." }]
+      },
+      "editRights": { "call": "open", "line": "", "evidence": [] },
+      "splitBill": {
+        "call": "out",
+        "line": "Payments are a separate epic",
+        "evidence": [
+          {
+            "file": "work/group-b/spec.md",
+            "quote": "Splitting the bill needs payments."
+          }
+        ]
+      },
+      "minimumOrderAndFee": {
+        "call": "in",
+        "line": "Minimum applies to the group total",
+        "evidence": [
+          {
+            "file": "work/group-b/spec.md",
+            "quote": "Minimum order on the group total."
+          }
+        ]
+      },
+      "kitchenPerPerson": {
+        "call": "open",
+        "line": "Asked the PO in the group, no answer yet",
+        "evidence": []
+      }
+    },
+    "acceptanceExamples": [
+      {
+        "example": "Placing a group order keeps each person's lines",
+        "test": "Placing_a_group_order_keeps_each_persons_lines",
+        "evidence": []
+      },
+      {
+        "example": "A colleague opens the link and adds a dish",
+        "test": null,
+        "evidence": []
+      }
+    ],
+    "slices": [],
+    "reviewHeadline": null,
+    "agentGotWrong": []
+  }
+}

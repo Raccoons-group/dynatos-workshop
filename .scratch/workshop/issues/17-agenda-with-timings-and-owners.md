@@ -70,7 +70,7 @@ Full schedule, with the pairings, the overnight run, the pipeline clock, the ris
   - "Before you arrive"
   - "What we need from you": a participant list with role, product, GitHub username, OS, and tool and IDE; the Visual Studio/Rider question; licences; the room and wifi; and lunch
   - Coaches are named once, at the top, not per block.
-- **Glossary** (Q9): added **Lead** and **Wall** to [CONTEXT.md](../../CONTEXT.md).
+- **Glossary** (Q9): added **Lead** and **Wall** to [GLOSSARY.md](../GLOSSARY.md).
 
 **Affects**
 

@@ -1,8 +1,20 @@
 {
   "extends": "@workshop/tsconfig/base.json",
   "compilerOptions": {
-    "rootDir": "src",
-    "outDir": "dist"
+    "lib": ["ES2023", "DOM"],
+    "types": ["vite/client", "node"],
+    "noEmit": true,
+    "jsx": "preserve"
   },
-  "include": ["src"]
+  "include": [
+    "components/**/*.vue",
+    "layouts/**/*.vue",
+    "global-top.vue",
+    "composables/**/*.ts",
+    "styles/**/*.ts",
+    "src/**/*.ts",
+    "test/**/*.ts",
+    "vite.config.ts",
+    "vitest.config.ts"
+  ]
 }

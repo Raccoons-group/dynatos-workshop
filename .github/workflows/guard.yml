@@ -1,0 +1,17 @@
+name: Guard
+
+# The cross-tool rules: no CLAUDE.md or Copilot instructions file, and portable shared skills.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  skills:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - run: node scripts/check-skills.mjs

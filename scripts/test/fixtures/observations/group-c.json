@@ -1,0 +1,92 @@
+{
+  "group": "group-c",
+  "pr": 15,
+  "sha": "0c7e5aa",
+  "reportedAt": "2026-10-27T14:31:19+01:00",
+  "schemaVersion": 1,
+  "facts": {
+    "phase": "Exploring",
+    "draft": true,
+    "specReviewedAt": null,
+    "ci": { "result": "fail", "at": "2026-10-27T14:30:12+01:00" },
+    "firstGreenAt": null,
+    "artifacts": {
+      "agentsMd": {
+        "present": true,
+        "firstSeenAt": "2026-10-27T13:51:00+01:00",
+        "lastChangedAt": "2026-10-27T14:29:00+01:00"
+      },
+      "glossary": {
+        "present": true,
+        "firstSeenAt": "2026-10-27T14:20:00+01:00",
+        "lastChangedAt": "2026-10-27T14:29:00+01:00"
+      },
+      "spec": { "present": false, "firstSeenAt": null, "lastChangedAt": null },
+      "tickets": {
+        "present": false,
+        "firstSeenAt": null,
+        "lastChangedAt": null
+      },
+      "review": {
+        "present": false,
+        "firstSeenAt": null,
+        "lastChangedAt": null
+      },
+      "howWeWorked": {
+        "present": false,
+        "firstSeenAt": null,
+        "lastChangedAt": null
+      }
+    },
+    "skillsWritten": [],
+    "areasTouched": {
+      "api": false,
+      "web": true,
+      "apiTests": false,
+      "webTests": false,
+      "agentContext": true,
+      "workingOut": false
+    },
+    "testsAdded": [],
+    "review": {
+      "rounds": 0,
+      "findings": { "actOn": 0, "consider": 0, "noted": 0, "dismissed": 0 }
+    },
+    "lastPushAt": "2026-10-27T14:29:44+01:00"
+  },
+  "judgements": {
+    "now": "Mapping the <b>ordering flow</b> into AGENTS.md **before** a spec",
+    "notable": "Asked the agent to explain the ordering flow before grilling the epic",
+    "decisions": {
+      "join": {
+        "call": "open",
+        "line": "Code or link <img src=x onerror=alert('pr')>",
+        "evidence": [
+          {
+            "file": "case/AGENTS.md",
+            "quote": "Join: code or link <img src=x onerror=alert('pr')>"
+          }
+        ]
+      },
+      "deadline": { "call": "open", "line": "", "evidence": [] },
+      "multipleRestaurants": { "call": "open", "line": "", "evidence": [] },
+      "editRights": { "call": "open", "line": "", "evidence": [] },
+      "splitBill": {
+        "call": "out",
+        "line": "**No payments** — see [this](javascript:alert(1))",
+        "evidence": [
+          {
+            "file": "case/AGENTS.md",
+            "quote": "There are no payments in the app."
+          }
+        ]
+      },
+      "minimumOrderAndFee": { "call": "open", "line": "", "evidence": [] },
+      "kitchenPerPerson": { "call": "open", "line": "", "evidence": [] }
+    },
+    "acceptanceExamples": [],
+    "slices": [],
+    "reviewHeadline": null,
+    "agentGotWrong": []
+  }
+}

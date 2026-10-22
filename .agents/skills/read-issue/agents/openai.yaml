@@ -1,0 +1,3 @@
+interface:
+  display_name: "Read Issue"
+  short_description: "Read a GitHub issue into facts, questions and decisions"

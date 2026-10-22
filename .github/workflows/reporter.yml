@@ -1,0 +1,159 @@
+name: Reporter
+
+# The live deck's reporter. On every push to a group's PR it describes the PR and publishes one observation
+# to the live-deck-data branch, which the deck syncs. The report job holds the key and can only read; the
+# publish job can write and has no key. So a hostile PR can at worst produce wrong JSON, and the publish
+# script validates and caps that before it lands.
+#
+# Everything the job trusts comes from the PR's base, never its head: the scripts, the reporter skill, the
+# schema and docs/agents/workshop.md. A hotfix on a base takes effect from the group's next push.
+
+on:
+  pull_request:
+    types: [opened, synchronize, ready_for_review, labeled]
+  workflow_dispatch:
+    inputs:
+      pr:
+        description: The PR to report on again
+        required: true
+        type: number
+
+permissions: {}
+
+jobs:
+  report:
+    # Same-repo branches only, never PRs into main, and of all labels only the checkpoint's.
+    if: >-
+      github.event_name == 'workflow_dispatch' || (
+        github.event.pull_request.head.repo.full_name == github.repository &&
+        github.event.pull_request.base.ref != 'main' &&
+        (github.event.action != 'labeled' || github.event.label.name == 'spec-reviewed'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    permissions:
+      contents: read
+      pull-requests: read
+      issues: read
+      checks: read
+    concurrency:
+      group: reporter-pr-${{ github.event.pull_request.number || inputs.pr }}
+      cancel-in-progress: true
+    outputs:
+      group: ${{ steps.target.outputs.group }}
+      pr: ${{ steps.pr.outputs.number }}
+      sha: ${{ steps.pr.outputs.head_sha }}
+      base_sha: ${{ steps.pr.outputs.base_sha }}
+      facts: ${{ steps.prep.outputs.facts }}
+      judgements: ${{ steps.reporter.outputs.structured_output }}
+    steps:
+      # Untrusted values (branch names, titles) only ever reach a shell through env.
+      - id: pr
+        name: Resolve the PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NUMBER: ${{ github.event.pull_request.number || inputs.pr }}
+        run: |
+          gh api "repos/$GITHUB_REPOSITORY/pulls/$NUMBER" --jq '
+            "number=\(.number)",
+            "base_ref=\(.base.ref)",
+            "head_ref=\(.head.ref)",
+            "base_sha=\(.base.sha)",
+            "head_sha=\(.head.sha)",
+            "same_repo=\(.head.repo.full_name == .base.repo.full_name)"' >> "$GITHUB_OUTPUT"
+
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ steps.pr.outputs.base_sha }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - id: target
+        name: Find the group whose card this is
+        env:
+          BASE_REF: ${{ steps.pr.outputs.base_ref }}
+          HEAD_REF: ${{ steps.pr.outputs.head_ref }}
+          SAME_REPO: ${{ steps.pr.outputs.same_repo }}
+        run: |
+          [ "$SAME_REPO" = true ] || { echo "Only branches in this repo are reported."; exit 1; }
+          node scripts/reporter-target.mjs --base-ref "$BASE_REF" --head-ref "$HEAD_REF"
+
+      - name: Wait for the tests on this commit
+        if: steps.target.outputs.skip == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HEAD_SHA: ${{ steps.pr.outputs.head_sha }}
+        run: node scripts/wait-for-check.mjs --sha "$HEAD_SHA" --check test --timeout 900
+
+      # Nothing is installed: the prep scripts need only Node, so no group's skill or postinstall ever runs.
+      - id: prep
+        name: Count the facts and gather the input
+        if: steps.target.outputs.skip == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BASE_SHA: ${{ steps.pr.outputs.base_sha }}
+          HEAD_SHA: ${{ steps.pr.outputs.head_sha }}
+          NUMBER: ${{ steps.pr.outputs.number }}
+        run: |
+          node scripts/reporter-input.mjs --base "$BASE_SHA" --head "$HEAD_SHA" --pr "$NUMBER" --out .reporter-input
+          echo "facts=$(jq -c . .reporter-input/facts.json)" >> "$GITHUB_OUTPUT"
+          echo "schema=$(jq -c 'del(."$schema", ."$id")' .claude/skills/reporter/judgements.schema.json)" >> "$GITHUB_OUTPUT"
+
+      - id: reporter
+        name: Describe the PR
+        if: steps.target.outputs.skip == 'false'
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github_token: ${{ github.token }}
+          prompt: /reporter
+          claude_args: |
+            --model claude-sonnet-5-5
+            --max-turns 20
+            --max-budget-usd 1
+            --allowedTools "Read,Grep,Glob"
+            --disallowedTools "Bash,Edit,Write,NotebookEdit,WebFetch,WebSearch,Task"
+            --json-schema '${{ steps.prep.outputs.schema }}'
+
+  publish:
+    needs: report
+    if: needs.report.outputs.judgements != ''
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    # One writer at a time, and never cancel a pending write: three groups can push at once.
+    concurrency:
+      group: live-deck-data
+      queue: max
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ needs.report.outputs.base_sha }}
+          persist-credentials: false
+
+      - uses: actions/checkout@v5
+        with:
+          ref: live-deck-data
+          path: .live-data
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Validate, cap and publish the observation
+        env:
+          GROUP: ${{ needs.report.outputs.group }}
+          NUMBER: ${{ needs.report.outputs.pr }}
+          SHA: ${{ needs.report.outputs.sha }}
+          FACTS: ${{ needs.report.outputs.facts }}
+          JUDGEMENTS: ${{ needs.report.outputs.judgements }}
+        run: |
+          printf '%s' "$FACTS" > "$RUNNER_TEMP/facts.json"
+          printf '%s' "$JUDGEMENTS" > "$RUNNER_TEMP/judgements.json"
+          node scripts/publish-live-data.mjs --group "$GROUP" --pr "$NUMBER" --sha "$SHA" \
+            --facts "$RUNNER_TEMP/facts.json" --judgements "$RUNNER_TEMP/judgements.json" --data-dir .live-data

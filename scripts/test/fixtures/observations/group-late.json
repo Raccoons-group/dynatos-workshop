@@ -1,0 +1,209 @@
+{
+  "group": "group-late",
+  "pr": 14,
+  "sha": "9b3e0a1",
+  "reportedAt": "2026-10-27T16:33:40+01:00",
+  "schemaVersion": 1,
+  "facts": {
+    "phase": "Reviewing",
+    "draft": true,
+    "specReviewedAt": "2026-10-27T14:35:00+01:00",
+    "ci": {
+      "result": "pass",
+      "at": "2026-10-27T16:31:10+01:00"
+    },
+    "firstGreenAt": "2026-10-27T15:48:02+01:00",
+    "artifacts": {
+      "agentsMd": {
+        "present": true,
+        "firstSeenAt": "2026-10-27T13:22:00+01:00",
+        "lastChangedAt": "2026-10-27T14:02:00+01:00"
+      },
+      "glossary": {
+        "present": true,
+        "firstSeenAt": "2026-10-27T13:40:00+01:00",
+        "lastChangedAt": "2026-10-27T14:10:00+01:00"
+      },
+      "spec": {
+        "present": true,
+        "firstSeenAt": "2026-10-27T13:55:00+01:00",
+        "lastChangedAt": "2026-10-27T14:30:00+01:00"
+      },
+      "tickets": {
+        "present": true,
+        "firstSeenAt": "2026-10-27T15:05:00+01:00",
+        "lastChangedAt": "2026-10-27T16:28:00+01:00"
+      },
+      "review": {
+        "present": true,
+        "firstSeenAt": "2026-10-27T16:05:00+01:00",
+        "lastChangedAt": "2026-10-27T16:28:00+01:00"
+      },
+      "howWeWorked": {
+        "present": true,
+        "firstSeenAt": "2026-10-27T14:05:00+01:00",
+        "lastChangedAt": "2026-10-27T14:40:00+01:00"
+      }
+    },
+    "skillsWritten": ["check-group-deadline"],
+    "areasTouched": {
+      "api": true,
+      "web": true,
+      "apiTests": true,
+      "webTests": true,
+      "agentContext": true,
+      "workingOut": true
+    },
+    "testsAdded": [
+      "Joining_with_a_code_adds_a_participant",
+      "Adding_after_the_deadline_is_refused",
+      "shows the shared basket per person"
+    ],
+    "review": {
+      "rounds": 2,
+      "findings": {
+        "actOn": 3,
+        "consider": 2,
+        "noted": 1,
+        "dismissed": 1
+      }
+    },
+    "lastPushAt": "2026-10-27T16:29:55+01:00"
+  },
+  "judgements": {
+    "now": "Fixing the review's act-on findings before marking the PR ready",
+    "notable": "The least experienced person drove while the others reviewed the diff",
+    "decisions": {
+      "join": {
+        "call": "in",
+        "line": "Six-character code, no accounts",
+        "evidence": [
+          {
+            "file": "work/group-a/spec.md",
+            "quote": "Colleagues join with a six-character code."
+          }
+        ]
+      },
+      "deadline": {
+        "call": "in",
+        "line": "Host sets it; latecomers are locked out",
+        "evidence": [
+          {
+            "file": "work/group-a/spec.md",
+            "quote": "After the deadline nobody can add dishes."
+          }
+        ]
+      },
+      "multipleRestaurants": {
+        "call": "out",
+        "line": "One restaurant per group order",
+        "evidence": [
+          {
+            "file": "work/group-a/spec.md",
+            "quote": "A group order has exactly one restaurant."
+          }
+        ]
+      },
+      "editRights": {
+        "call": "in",
+        "line": "Own dishes only; host can remove anyone's",
+        "evidence": [
+          {
+            "file": "work/group-a/spec.md",
+            "quote": "The host can remove any line."
+          }
+        ]
+      },
+      "splitBill": {
+        "call": "out",
+        "line": "No payments in the app",
+        "evidence": [
+          {
+            "file": "work/group-a/spec.md",
+            "quote": "Out: splitting the bill."
+          }
+        ]
+      },
+      "minimumOrderAndFee": {
+        "call": "open",
+        "line": "Fee share per person still under discussion",
+        "evidence": [
+          {
+            "file": "work/group-a/spec.md",
+            "quote": "TBD: show each person's share?"
+          }
+        ]
+      },
+      "kitchenPerPerson": {
+        "call": "in",
+        "line": "Kitchen view groups lines per person",
+        "evidence": [
+          {
+            "file": "work/group-a/spec.md",
+            "quote": "Kitchen sees the order grouped per person."
+          }
+        ]
+      }
+    },
+    "acceptanceExamples": [
+      {
+        "example": "A colleague joins with the code and sees the shared basket",
+        "test": "Joining_with_a_code_adds_a_participant",
+        "evidence": [
+          {
+            "file": "work/group-late/spec.md",
+            "quote": "Joining with the code adds you to the group order."
+          }
+        ]
+      },
+      {
+        "example": "After the deadline adding a dish is refused",
+        "test": "Adding_after_the_deadline_is_refused",
+        "evidence": []
+      },
+      {
+        "example": "The host removes a colleague's dish",
+        "test": null,
+        "evidence": []
+      }
+    ],
+    "slices": [
+      {
+        "name": "Start a group order and join with a code",
+        "hasProof": true,
+        "status": "shipped",
+        "evidence": [
+          {
+            "file": "work/group-late/issues/01-start-and-join.md",
+            "quote": "Status: done"
+          }
+        ]
+      },
+      {
+        "name": "Close the order at the deadline",
+        "hasProof": true,
+        "status": "building",
+        "evidence": []
+      },
+      {
+        "name": "The host places it as one order",
+        "hasProof": false,
+        "status": "planned",
+        "evidence": []
+      }
+    ],
+    "reviewHeadline": "Two acceptance examples still have no test",
+    "agentGotWrong": [
+      {
+        "item": "Assumed colleagues need an account to join",
+        "twice": true,
+        "evidence": [
+          {
+            "file": "work/group-late/how-we-worked.md",
+            "quote": "Second time it added a sign-in step."
+          }
+        ]
+      }
+    ]
+  }
+}

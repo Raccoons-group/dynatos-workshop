@@ -1,0 +1,456 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "updatedAt": "2026-10-28T05:40:00+01:00",
+  "sources": [
+    {
+      "kind": "git",
+      "note": "Each group's branch from its base, with commit times"
+    },
+    {
+      "kind": "pr-timeline",
+      "note": "Label events and CI runs per commit on each group's PR"
+    },
+    {
+      "kind": "working-out",
+      "note": "Spec, tickets, review.md and the how-we-worked note"
+    },
+    {
+      "kind": "observations",
+      "note": "The live deck's observation history, as a timeline"
+    },
+    { "kind": "coach-log", "note": "The coaches' log about groups" }
+  ],
+  "routes": [
+    {
+      "group": "group-a",
+      "segments": [
+        {
+          "station": "Explore",
+          "from": "2026-10-27T11:10:00+01:00",
+          "to": "2026-10-27T12:05:00+01:00",
+          "evidence": [{ "kind": "commit", "sha": "a1a1a1a" }],
+          "confidence": "medium"
+        },
+        {
+          "station": "Specify",
+          "from": "2026-10-27T12:05:00+01:00",
+          "to": "2026-10-27T14:35:00+01:00",
+          "evidence": [
+            {
+              "kind": "file",
+              "file": "work/group-a/spec.md",
+              "quote": "## Acceptance examples"
+            }
+          ],
+          "confidence": "high"
+        },
+        {
+          "station": "Build",
+          "from": "2026-10-27T14:50:00+01:00",
+          "to": null,
+          "evidence": [
+            {
+              "kind": "ci",
+              "sha": "a4a4a4a",
+              "check": "test",
+              "result": "fail",
+              "at": "2026-10-27T15:02:00+01:00"
+            }
+          ],
+          "confidence": "high"
+        }
+      ]
+    }
+  ],
+  "isThisYou": [
+    {
+      "group": "group-a",
+      "claim": "The group wrote its tests after the code for the second slice",
+      "correction": null,
+      "evidence": [
+        {
+          "kind": "file",
+          "file": "work/group-a/how-we-worked.md",
+          "quote": "Tests came after the code this time"
+        }
+      ],
+      "confidence": "low"
+    },
+    {
+      "group": "group-b",
+      "claim": "The group left the deadline open on purpose",
+      "correction": "We forgot it, it wasn't on purpose",
+      "evidence": [{ "kind": "coach-observation" }],
+      "confidence": "low"
+    }
+  ],
+  "decisions": [
+    {
+      "group": "group-a",
+      "calls": {
+        "join": {
+          "call": "in",
+          "line": "Colleagues join with a code from the host",
+          "rework": null,
+          "evidence": [
+            {
+              "kind": "file",
+              "file": "work/group-a/spec.md",
+              "quote": "Colleagues join with the code the host shares"
+            }
+          ],
+          "confidence": "high"
+        },
+        "deadline": {
+          "call": "in",
+          "line": "The host sets a deadline",
+          "rework": "The spec changed after the checkpoint to say who sets it",
+          "evidence": [{ "kind": "commit", "sha": "a5a5a5a" }],
+          "confidence": "medium"
+        },
+        "multipleRestaurants": {
+          "call": "out",
+          "line": "One restaurant per group order",
+          "rework": null,
+          "evidence": [
+            {
+              "kind": "file",
+              "file": "work/group-a/spec.md",
+              "quote": "One restaurant per group order"
+            }
+          ],
+          "confidence": "high"
+        },
+        "editRights": {
+          "call": "open",
+          "line": "Not decided yet",
+          "rework": null,
+          "evidence": [
+            {
+              "kind": "file",
+              "file": "work/group-a/spec.md",
+              "quote": "Open question: who can change what"
+            }
+          ],
+          "confidence": "medium"
+        },
+        "splitBill": {
+          "call": "out",
+          "line": "No splitting",
+          "rework": null,
+          "evidence": [
+            {
+              "kind": "file",
+              "file": "work/group-a/spec.md",
+              "quote": "Out of scope: splitting the bill"
+            }
+          ],
+          "confidence": "high"
+        },
+        "minimumOrderAndFee": {
+          "call": "open",
+          "line": "Not discussed",
+          "rework": null,
+          "evidence": [{ "kind": "coach-observation" }],
+          "confidence": "low"
+        },
+        "kitchenPerPerson": {
+          "call": "in",
+          "line": "The kitchen sees the order per person",
+          "rework": null,
+          "evidence": [
+            {
+              "kind": "file",
+              "file": "work/group-a/issues/03-host-places-it.md",
+              "quote": "The kitchen sees who ordered what"
+            }
+          ],
+          "confidence": "medium"
+        }
+      }
+    }
+  ],
+  "signals": {
+    "computedAt": "2026-10-28T05:30:00+01:00",
+    "timeZone": "Europe/Amsterdam",
+    "kickoff": "11:10",
+    "lunch": { "from": "12:40", "to": "14:05" },
+    "ciCheck": "test",
+    "groups": [
+      {
+        "group": "group-a",
+        "pr": 12,
+        "from": "a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0",
+        "head": "a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9a9",
+        "timeToSpec": {
+          "labelledAt": "2026-10-27T14:35:00+01:00",
+          "minutes": 120
+        },
+        "specRework": {
+          "changes": [{ "sha": "a5a5a5a", "at": "2026-10-27T15:20:00+01:00" }]
+        },
+        "firstPassCi": {
+          "slices": [
+            {
+              "ticket": "01-start-and-join.md",
+              "title": "Start a group order and join with a code",
+              "runs": [
+                {
+                  "sha": "a4a4a4a",
+                  "at": "2026-10-27T15:02:00+01:00",
+                  "result": "fail"
+                },
+                {
+                  "sha": "a5a5a5a",
+                  "at": "2026-10-27T15:22:00+01:00",
+                  "result": "fail"
+                },
+                {
+                  "sha": "a6a6a6a",
+                  "at": "2026-10-27T15:41:00+01:00",
+                  "result": "pass"
+                }
+              ]
+            },
+            {
+              "ticket": "02-deadline.md",
+              "title": "Close the order at the deadline",
+              "runs": [
+                {
+                  "sha": "a8a8a8a",
+                  "at": "2026-10-27T16:12:00+01:00",
+                  "result": "pass"
+                }
+              ]
+            },
+            {
+              "ticket": "03-host-places-it.md",
+              "title": "The host places it as one order",
+              "runs": []
+            }
+          ]
+        },
+        "reviewRounds": { "rounds": 2, "file": "work/group-a/review.md" },
+        "drift": {
+          "planned": [
+            {
+              "ticket": "01-start-and-join.md",
+              "title": "Start a group order and join with a code"
+            },
+            {
+              "ticket": "02-deadline.md",
+              "title": "Close the order at the deadline"
+            },
+            {
+              "ticket": "03-host-places-it.md",
+              "title": "The host places it as one order"
+            }
+          ],
+          "shipped": [
+            {
+              "ticket": "01-start-and-join.md",
+              "title": "Start a group order and join with a code"
+            },
+            {
+              "ticket": "02-deadline.md",
+              "title": "Close the order at the deadline"
+            }
+          ],
+          "added": [],
+          "dropped": [],
+          "outsidePlan": ["case/api/Program.cs"]
+        }
+      },
+      {
+        "group": "group-b",
+        "pr": 14,
+        "from": "b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0",
+        "head": "b9b9b9b9b9b9b9b9b9b9b9b9b9b9b9b9b9b9b9b9",
+        "timeToSpec": {
+          "labelledAt": "2026-10-27T13:50:00+01:00",
+          "minutes": 90
+        },
+        "specRework": { "changes": [] },
+        "firstPassCi": {
+          "slices": [
+            {
+              "ticket": null,
+              "title": null,
+              "runs": [
+                {
+                  "sha": "b4b4b4b",
+                  "at": "2026-10-27T15:30:00+01:00",
+                  "result": "fail"
+                },
+                {
+                  "sha": "b5b5b5b",
+                  "at": "2026-10-27T15:55:00+01:00",
+                  "result": "pass"
+                }
+              ]
+            }
+          ]
+        },
+        "reviewRounds": { "rounds": 1, "file": "work/group-b/review.md" },
+        "drift": {
+          "planned": [
+            {
+              "ticket": "01-start-a-group-order.md",
+              "title": "Start a group order"
+            },
+            {
+              "ticket": "02-join-it.md",
+              "title": "Join it"
+            }
+          ],
+          "shipped": [],
+          "added": [
+            {
+              "ticket": "03-start-and-join.md",
+              "title": "Start and join in one go"
+            }
+          ],
+          "dropped": [
+            {
+              "ticket": "02-join-it.md",
+              "title": "Join it"
+            }
+          ],
+          "outsidePlan": [
+            ".github/workflows/tests.yml",
+            "case/api/Program.cs",
+            "case/web/src/App.tsx",
+            "case/web/src/api.ts",
+            "package.json"
+          ]
+        }
+      },
+      {
+        "group": "group-c",
+        "pr": 15,
+        "from": "c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0",
+        "head": "c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9c9",
+        "timeToSpec": { "labelledAt": null, "minutes": null },
+        "specRework": { "changes": [] },
+        "firstPassCi": { "slices": [] },
+        "reviewRounds": { "rounds": 0, "file": null },
+        "drift": {
+          "planned": [],
+          "shipped": [],
+          "added": [],
+          "dropped": [],
+          "outsidePlan": []
+        }
+      }
+    ]
+  },
+  "driving": [
+    {
+      "group": "group-a",
+      "tool": "Claude Code, Opus 5.5",
+      "tests": {
+        "order": "mixed",
+        "evidence": [
+          {
+            "kind": "file",
+            "file": "work/group-a/issues/01-start-and-join.md",
+            "quote": "Tests: test-first"
+          },
+          {
+            "kind": "file",
+            "file": "work/group-a/issues/02-deadline.md",
+            "quote": "Tests: test-after"
+          }
+        ],
+        "confidence": "high"
+      },
+      "corrections": [
+        {
+          "text": "Stopped the agent from adding accounts to join an order",
+          "evidence": [
+            {
+              "kind": "file",
+              "file": "work/group-a/how-we-worked.md",
+              "quote": "We told it twice that nobody needs an account"
+            }
+          ],
+          "confidence": "medium"
+        }
+      ],
+      "skillsFired": [
+        {
+          "skill": "grill-with-docs",
+          "evidence": [
+            {
+              "kind": "file",
+              "file": "work/group-a/how-we-worked.md",
+              "quote": "grill-with-docs ran for the spec"
+            }
+          ],
+          "confidence": "high"
+        }
+      ],
+      "steering": {
+        "text": "One driver at the keyboard, the rest reading the spec aloud",
+        "evidence": [{ "kind": "coach-observation" }],
+        "confidence": "medium"
+      },
+      "saidByTheGroup": [
+        {
+          "text": "Next time we'd slice smaller",
+          "evidence": [
+            {
+              "kind": "file",
+              "file": "work/group-a/how-we-worked.md",
+              "quote": "Next time we'd slice smaller"
+            }
+          ],
+          "confidence": "high"
+        }
+      ],
+      "anecdotes": []
+    }
+  ],
+  "mistakes": [
+    {
+      "group": "group-a",
+      "text": "Assumed colleagues need an account to join",
+      "station": "Build",
+      "origin": "spec",
+      "repeated": true,
+      "evidence": [
+        {
+          "kind": "file",
+          "file": "work/group-a/how-we-worked.md",
+          "quote": "It added a sign-up step again"
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "group": "group-b",
+      "text": "Ran the wrong test project",
+      "station": "Build",
+      "origin": "context",
+      "repeated": false,
+      "evidence": [{ "kind": "commit", "sha": "b4b4b4b" }],
+      "confidence": "medium"
+    }
+  ],
+  "shortlist": [
+    {
+      "item": "The agent added accounts nobody asked for",
+      "groups": ["group-a"],
+      "thread": "context",
+      "evidence": [
+        {
+          "kind": "file",
+          "file": "work/group-a/how-we-worked.md",
+          "quote": "It added a sign-up step again"
+        }
+      ],
+      "confidence": "medium"
+    }
+  ]
+}

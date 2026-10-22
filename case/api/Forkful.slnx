@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Forkful.Api.Tests/Forkful.Api.Tests.csproj" />
+  <Project Path="Forkful.Api/Forkful.Api.csproj" />
+</Solution>

@@ -73,7 +73,7 @@ Grilled with Matthias on 20 Oct 2026 in three rounds (Q1–Q21). Full sketch, wi
 - **`read-issue`** (Q12) uses `gh issue view --comments`. If that fails, it uses the agent's own GitHub tool, and failing that, it asks the group to paste the issue. There's no Jira variant on Day 1.
 - **`open-pr`** (Q13) opens a draft PR early, after the first commit of slice 1, and updates it on every later push.
 - **Visual Studio and JetBrains** (Q7). We don't know which IDEs Dynatos uses. This is an **open question for Dynatos**: "Who uses Visual Studio or Rider with Copilot Chat?" The setup instructions steer those people to Copilot CLI or VS Code. There's no `copilot-instructions.md` pointer.
-- **Glossary.** Added **Skill library** and **Review round** to [CONTEXT.md](../../CONTEXT.md) (Q17).
+- **Glossary.** Added **Skill library** and **Review round** to [GLOSSARY.md](../GLOSSARY.md) (Q17).
 
 **Affects**
 

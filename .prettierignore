@@ -1,2 +1,5 @@
 pnpm-lock.yaml
 .scratch/
+
+# Slidev slides: Prettier reads per-slide frontmatter as Markdown and breaks the layouts.
+apps/deck/**/*.md

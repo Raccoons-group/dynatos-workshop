@@ -1,0 +1,328 @@
+:root {
+  --ink: #1f2328;
+  --muted: #6a737d;
+  --line: #e4e6ea;
+  --paper: #ffffff;
+  --page: #f6f7f9;
+  --accent: #d2491f;
+  --accent-ink: #ffffff;
+  --open: #1d7a46;
+  --closed: #9a3b3b;
+  font-family:
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
+  color: var(--ink);
+  background: var(--page);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+h1 {
+  margin: 0.25rem 0 0.5rem;
+}
+
+h2 {
+  margin: 1.5rem 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+p {
+  margin: 0.25rem 0;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+.button {
+  display: inline-block;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid var(--accent);
+  border-radius: 6px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+button.secondary,
+button.small {
+  background: var(--paper);
+  color: var(--accent);
+}
+
+button.small {
+  padding: 0 0.5rem;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+input,
+select {
+  padding: 0.4rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font: inherit;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+
+.app-header nav {
+  display: flex;
+  gap: 1rem;
+  flex: 1;
+}
+
+.app-header nav a {
+  text-decoration: none;
+  color: var(--muted);
+}
+
+.app-header nav a.active {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.user-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--muted);
+}
+
+main {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.error {
+  color: var(--closed);
+}
+
+.warning {
+  color: #8a5a00;
+}
+
+.back {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.chip {
+  background: var(--paper);
+  color: var(--ink);
+  border-color: var(--line);
+  border-radius: 999px;
+}
+
+.chip.active {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  padding: 1rem;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.card-link {
+  display: block;
+  text-decoration: none;
+}
+
+.card-head,
+.page-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card-head h2 {
+  margin: 0;
+}
+
+.badge,
+.status {
+  padding: 0.1rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+.badge.open {
+  background: #e3f4ea;
+  color: var(--open);
+}
+
+.badge.closed {
+  background: #f6e5e5;
+  color: var(--closed);
+}
+
+.status {
+  background: var(--page);
+  border: 1px solid var(--line);
+}
+
+.status-Cancelled {
+  color: var(--closed);
+}
+
+.status-Delivered {
+  color: var(--open);
+}
+
+.menu-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 2rem;
+  align-items: start;
+}
+
+.dishes li {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.dish.sold-out {
+  opacity: 0.45;
+}
+
+.price {
+  font-variant-numeric: tabular-nums;
+}
+
+.basket {
+  position: sticky;
+  top: 1rem;
+  padding: 1rem;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.basket h2 {
+  margin-top: 0;
+}
+
+.lines li,
+.subtotal,
+.order-total {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.25rem 0;
+}
+
+.subtotal {
+  margin: 0.5rem 0 1rem;
+  border-top: 1px solid var(--line);
+  padding-top: 0.5rem;
+}
+
+.order-total {
+  border-top: 1px solid var(--line);
+  margin-top: 0.5rem;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.checkout {
+  max-width: 520px;
+}
+
+.checkout form {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.checkout label {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.summary {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.25rem;
+  margin: 0;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.summary dd {
+  margin: 0;
+  text-align: right;
+}
+
+.summary .total {
+  font-weight: 700;
+}

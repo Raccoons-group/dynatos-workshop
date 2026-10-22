@@ -38,7 +38,7 @@ Small enough for an agent to read all of it in one go (about 2,000 lines in tota
 | ----- | ------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
 | Stack | .NET 10 (LTS), ASP.NET Core controllers, EF Core on SQLite (a file, no Docker), seeded on startup                    | React 19, Vite, TypeScript, React Router, plain `fetch`                                                  |
 | Size  | About 15 files, about 1,000 lines                                                                                    | About 15 files, about 1,000 lines                                                                         |
-| Shape | `RestaurantsController`, `OrdersController`, `KitchenController`; an `OrderService` holding the ordering rules; `ForkfulDbContext` | Pages: Restaurants, Menu (with the basket), Checkout, My orders, Kitchen. An "Acting as" switcher (a customer or a restaurant) instead of a login |
+| Shape | `RestaurantsController`, `OrdersController`, `KitchenController`, and `ForkfulDbContext` | Pages: Restaurants, Menu (with the basket), Checkout, My orders, Kitchen. An "Acting as" switcher (a customer or a restaurant) instead of a login |
 | Tests | `Forkful.Api.Tests`: xUnit with `WebApplicationFactory`, three happy-path tests                                       | Vitest and Testing Library set up, with one smoke test                                                   |
 
 **What already works**

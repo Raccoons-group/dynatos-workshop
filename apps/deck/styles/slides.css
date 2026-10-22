@@ -1,0 +1,452 @@
+/* The talk's slides: the default and demo layouts, the footer, the big ribbon and the exhibits from this repo. */
+
+/* Layout `default`: the title top-left, then one column of text. */
+.slidev-layout.rac-slide.rac-default {
+  padding: 30px 34px 72px;
+  display: flex;
+  flex-direction: column;
+}
+.rac-default h1 {
+  margin-bottom: 30px;
+  max-width: 780px;
+}
+.rac-default > p {
+  margin: 0 0 16px;
+  max-width: 760px;
+  font-size: 19.4px;
+  line-height: 1.38;
+}
+.rac-default > ul,
+.rac-default > ol {
+  list-style: disc;
+  margin: 4px 0 0;
+  padding-left: 22px;
+  max-width: 760px;
+  font-size: 15.3px;
+  line-height: 1.42;
+}
+.rac-default > ol {
+  list-style: decimal;
+}
+.rac-default > ul + p,
+.rac-default > ol + p,
+.rac-default > div + p {
+  margin-top: 18px;
+}
+.rac-default li + li {
+  margin-top: 6px;
+}
+.rac-slide strong {
+  font-weight: 600;
+}
+.rac-slide :not(pre) > code {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.86em;
+  padding: 1px 5px;
+  border-radius: 2px;
+  background: var(--rac-surf);
+}
+.rac-default pre {
+  margin: 4px 0 0;
+  max-width: 760px;
+  padding: 12px 14px;
+  border-radius: 0 4px 4px 0;
+  border-left: 1px solid var(--rac-line);
+  font-size: 11px;
+  line-height: 1.45;
+  white-space: pre-wrap;
+}
+/* A question already ends in its own mark: `# Title? {.rac-q}`. */
+.rac-slide h1.rac-q::after {
+  content: none;
+}
+
+/* Layout `demo`: a narrower column, so the demo card fits top right. */
+.rac-demo-slide h1,
+.rac-demo-slide > p,
+.rac-demo-slide > ul,
+.rac-demo-slide > ol,
+.rac-demo-slide pre {
+  max-width: 590px;
+}
+.rac-fallback {
+  position: absolute;
+  right: 80px;
+  top: 524px;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 10.5px;
+  color: var(--rac-muted);
+}
+
+/* The station or thread a slide belongs to, above its title. */
+.rac-slide p.rac-kicker,
+.rac-kicker {
+  position: absolute;
+  left: 34px;
+  top: 12px;
+  margin: 0;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--rac-muted);
+}
+
+/* The forks on the ribbon: fixed for every group, or the group's own call. */
+.rac-call-badge {
+  position: absolute;
+  right: 34px;
+  top: 34px;
+  padding: 3px 9px;
+  border-radius: 2px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: inset 0 0 0 1px var(--rac-line);
+}
+.rac-call-badge-fixed {
+  background: var(--rac-ink);
+  color: var(--rac-bg);
+}
+
+/* The footer on every slide: when the deck last heard from GitHub. */
+.rac-updated {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 526px;
+  margin: 0;
+  text-align: center;
+  font-family: var(--rac-font);
+  font-size: 9.5px;
+  color: var(--rac-g666);
+  pointer-events: none;
+}
+
+/* The ribbon, large: stations on top with the gate, threads underneath. */
+.rac-ribbon-big {
+  position: absolute;
+  left: 34px;
+  top: 120px;
+  width: 932px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) 16px repeat(
+      5,
+      minmax(0, 1fr)
+    );
+  gap: 6px;
+}
+.rac-ribbon-agenda {
+  top: 92px;
+}
+.rac-stop {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 80px;
+  padding: 11px 10px;
+  background: var(--rac-surf);
+  border-left: 1px solid var(--rac-line);
+  border-radius: 0 4px 4px 0;
+}
+.rac-stop-name {
+  font-size: 15px;
+  font-weight: 400;
+}
+.rac-stop-detail {
+  font-size: 10.5px;
+  line-height: 1.3;
+  color: var(--rac-muted);
+}
+.rac-stop-detail.rac-stop-fixed {
+  color: var(--rac-ink);
+}
+.rac-stop-detail.rac-stop-fixed::before {
+  content: "Fixed";
+  display: block;
+  margin-bottom: 3px;
+  font-size: 8.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.rac-stop-gate {
+  grid-column: 4;
+  align-self: center;
+  text-align: center;
+  font-size: 22px;
+  color: var(--rac-g666);
+}
+.rac-stop-gate.rac-stop-fixed {
+  color: var(--rac-ink);
+}
+.rac-thread-bar {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 8px 12px;
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 1px var(--rac-g434);
+}
+.rac-thread-name {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.rac-thread-role {
+  font-size: 11px;
+  color: var(--rac-muted);
+}
+.rac-thread-bar-lit {
+  background: var(--rac-surf);
+  box-shadow: inset 0 0 0 1px var(--rac-line);
+}
+.rac-thread-bar-lit .rac-thread-role {
+  color: var(--rac-ink);
+}
+.rac-band {
+  padding: 6px 9px;
+  border-radius: 2px;
+  background: var(--rac-g434);
+  font-size: 11px;
+  line-height: 1.25;
+}
+.rac-band-when {
+  margin-right: 4px;
+  color: var(--rac-muted);
+}
+
+/* Exhibits: files from this repo, shown as what they are. */
+.rac-exhibit {
+  position: absolute;
+  left: 34px;
+  top: 80px;
+  width: 932px;
+  margin: 0;
+}
+.rac-exhibit-label {
+  margin: 0 0 8px;
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--rac-muted);
+}
+.rac-exhibit-pair {
+  position: absolute;
+  left: 34px;
+  top: 80px;
+  width: 932px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.rac-exhibit-pair .rac-exhibit {
+  position: static;
+  width: auto;
+  min-width: 0;
+}
+.rac-file pre {
+  margin: 0;
+  padding: 10px 12px;
+  background: var(--rac-surf);
+  border-left: 1px solid var(--rac-line);
+  border-radius: 0 4px 4px 0;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 9px;
+  line-height: 1.4;
+  white-space: pre;
+  overflow: hidden;
+  max-height: 382px;
+  color: var(--rac-ink);
+}
+.rac-file .rac-exhibit-label {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.rac-file-more {
+  margin: 4px 0 0;
+  font-size: 9.5px;
+  color: var(--rac-muted);
+}
+
+.rac-map {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 28px;
+}
+.rac-map-decisions {
+  columns: 2;
+  column-gap: 22px;
+  margin: 0;
+  padding-left: 22px;
+  list-style: decimal;
+  font-size: 13px;
+  line-height: 1.3;
+}
+.rac-map-decisions li {
+  margin-bottom: 8px;
+  break-inside: avoid;
+}
+.rac-map-list {
+  margin: 0 0 18px;
+  padding-left: 16px;
+  list-style: disc;
+  font-size: 13px;
+  line-height: 1.3;
+  color: var(--rac-muted);
+}
+.rac-map-list li + li {
+  margin-top: 4px;
+}
+
+.rac-prs ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.rac-prs li {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) 150px 64px;
+  gap: 10px;
+  align-items: baseline;
+  padding: 7px 10px;
+  background: var(--rac-surf);
+  border-radius: 2px;
+  font-size: 12.5px;
+}
+.rac-pr-number {
+  color: var(--rac-muted);
+}
+.rac-pr-title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.rac-pr-base {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 10px;
+  color: var(--rac-muted);
+}
+.rac-pr-open {
+  color: var(--rac-ink);
+  box-shadow: inset 0 0 0 1px var(--rac-line);
+}
+.rac-pr-merged {
+  background: var(--rac-ink);
+  color: var(--rac-bg);
+  box-shadow: none;
+}
+
+.rac-glossary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+.rac-glossary dl {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.25;
+}
+.rac-glossary dt {
+  margin-top: 6px;
+  font-weight: 500;
+}
+.rac-glossary dd {
+  margin: 0;
+  font-size: 9.5px;
+  color: var(--rac-muted);
+}
+
+.rac-skills-toolkit {
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 6px;
+}
+.rac-skills-toolkit li {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 76px;
+  padding: 10px 9px;
+  background: var(--rac-surf);
+  border-left: 1px solid var(--rac-line);
+  border-radius: 0 4px 4px 0;
+}
+.rac-skill {
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 10px;
+  color: var(--rac-g666);
+}
+.rac-skill-present {
+  color: var(--rac-ink);
+}
+.rac-skills-others {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 22px;
+}
+.rac-skills-others li {
+  display: grid;
+  grid-template-columns: 150px minmax(0, 1fr);
+  gap: 8px;
+  font-size: 10.5px;
+  line-height: 1.3;
+}
+.rac-skill-description {
+  color: var(--rac-muted);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* Two live views stacked on one slide (69: the reviewers' findings, then tonight's checklist). */
+.rac-stack .rac-wall {
+  height: 232px;
+}
+.rac-stack .rac-review-card {
+  gap: 10px;
+}
+.rac-stack .rac-tonight {
+  top: 326px;
+  gap: 6px;
+}
+.rac-stack .rac-tonight-row {
+  padding: 8px 16px;
+}
+
+/* A line of text under a ribbon on a `data` slide. */
+.rac-below {
+  position: absolute;
+  left: 34px;
+  top: 392px;
+  width: 900px;
+}
+.rac-below p {
+  margin: 0;
+  font-size: 15.3px;
+  line-height: 1.42;
+}
+
+/* Text next to a file exhibit. */
+.rac-exhibit-text ul {
+  list-style: disc;
+  margin: 22px 0 0;
+  padding-left: 20px;
+  font-size: 15.3px;
+  line-height: 1.42;
+}
+.rac-exhibit-text li + li {
+  margin-top: 10px;
+}

@@ -1,0 +1,10 @@
+{
+  "name": "@forkful/api",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "dotnet build Forkful.slnx",
+    "test": "dotnet test Forkful.slnx",
+    "dev": "dotnet watch --no-hot-reload --project Forkful.Api --artifacts-path .dev run"
+  }
+}

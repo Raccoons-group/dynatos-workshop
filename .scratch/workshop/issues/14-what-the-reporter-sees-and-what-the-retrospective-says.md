@@ -51,7 +51,7 @@ Full sketch, with the field list, the live views and the retrospective outline: 
   7. Where the agent went wrong, placed where each mistake started
   8. Hand-off to the skill lab: the "wrong twice" shortlist, tagged with where a fix could live, and no suggested actions
 - **Tool differences are anecdotes (n = 3).** At the kickoff, gently steer groups towards different tools. No group-by-group contrast between a group's note and its behaviour: the perception gap is made once, in general.
-- **Glossary:** added Observation, Team signal, How-we-worked note and Phase to [CONTEXT.md](../../CONTEXT.md).
+- **Glossary:** added Observation, Team signal, How-we-worked note and Phase to [GLOSSARY.md](../GLOSSARY.md).
 
 **Depends on**
 

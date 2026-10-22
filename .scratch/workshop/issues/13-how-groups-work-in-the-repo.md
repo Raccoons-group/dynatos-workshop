@@ -54,7 +54,7 @@ Full plan, with the branch diagram, the cut steps, the `docs/agents/` values, Da
 - **Defaults I picked, not asked:**
   - Allow merge commits only and don't auto-delete head branches, so each base keeps the group's commits for the retrospective.
   - Tag the stripped starting point `case-start`, so the retrospective can read `case-start..group-<x>/main`.
-- **Glossary:** added **Coach notes** to [CONTEXT.md](../../CONTEXT.md).
+- **Glossary:** added **Coach notes** to [GLOSSARY.md](../GLOSSARY.md).
 
 **Affects**
 

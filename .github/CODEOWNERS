@@ -1,0 +1,10 @@
+# The coaches own the shared harness. Nobody owns case/: the groups work there.
+# Advisory only: no branch requires code-owner review.
+# TODO: add Sander's GitHub handle next to Matthias's on each line.
+
+/.github/      @schuyten-raccoons
+/.agents/      @schuyten-raccoons
+/.claude/      @schuyten-raccoons
+/scripts/      @schuyten-raccoons
+/AGENTS.md     @schuyten-raccoons
+/REVIEW.md     @schuyten-raccoons

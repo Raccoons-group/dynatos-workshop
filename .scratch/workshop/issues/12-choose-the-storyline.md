@@ -57,7 +57,7 @@ Final outline: [assets/storyline-final.md](../assets/storyline-final.md). Grille
   - "Rebuild the friction" opens the review block.
   - "Measure the team" closes Part 2.
   - The station names, the tag names, and the mapping of live views to slides are also mine.
-- **Glossary:** in [CONTEXT.md](../../CONTEXT.md), added **Ribbon**, **Station**, **Thread** and **Fixed gate**, and redefined **Phase**. The spec review checkpoint's avoid-list now says "the gate".
+- **Glossary:** in [GLOSSARY.md](../GLOSSARY.md), added **Ribbon**, **Station**, **Thread** and **Fixed gate**, and redefined **Phase**. The spec review checkpoint's avoid-list now says "the gate".
 
 **Affects**
 
