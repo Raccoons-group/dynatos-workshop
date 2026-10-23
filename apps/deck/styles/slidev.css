@@ -1,5 +1,0 @@
-/* Undo what Slidev's own base styles add to a layout. */
-.slidev-layout.rac-slide {
-  padding: 0;
-  height: 100%;
-}

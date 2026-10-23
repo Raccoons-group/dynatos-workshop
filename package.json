@@ -13,10 +13,6 @@
     "skills:link": "node scripts/link-skills.mjs",
     "skills:check": "node scripts/check-skills.mjs",
     "setup:check": "node scripts/setup-check.mjs",
-    "live:sync": "node scripts/live-sync.mjs",
-    "report:local": "node scripts/report-local.mjs",
-    "demo:reset": "node scripts/demo-reset.mjs",
-    "retro": "node scripts/retrospective.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "postinstall": "node scripts/link-skills.mjs"

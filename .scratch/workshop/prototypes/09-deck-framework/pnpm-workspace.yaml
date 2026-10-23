@@ -1,4 +1,0 @@
-# PROTOTYPE (ticket 09). Its own little workspace, so installing here never touches the repo's.
-packages:
-  - slidev
-  - react-mdx
