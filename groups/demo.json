@@ -2,12 +2,12 @@
   "group": "demo",
   "pr": 4,
   "sha": "63a3a0c090443a199062a29ef59a169e7edb277b",
-  "reportedAt": "2026-10-23T13:54:56.174Z",
+  "reportedAt": "2026-10-23T14:04:14.860Z",
   "schemaVersion": 1,
   "facts": {
-    "phase": "Exploring",
+    "phase": "Spec reviewed",
     "draft": true,
-    "specReviewedAt": null,
+    "specReviewedAt": "2026-10-23T14:03:22Z",
     "ci": {
       "result": "pass",
       "at": "2026-10-23T13:54:04Z"
@@ -67,8 +67,8 @@
     "lastPushAt": "2026-10-23T15:53:01+02:00"
   },
   "judgements": {
-    "now": "Reading issue on allergens and pushing the first branch",
-    "notable": "At the keyboard, one person did everything",
+    "now": "Reading issue #2 on allergens and pushing the first branch",
+    "notable": "The group says one person did everything at the keyboard, and it agreed to every restatement as proposed",
     "decisions": {
       "join": {
         "call": "open",
@@ -116,7 +116,7 @@
         "evidence": [
           {
             "file": "work/demo/how-we-worked.md",
-            "quote": "the say-it-back link in `.claude/skills` pointed to a path that didn't exist"
+            "quote": "the say-it-back link in `.claude/skills` pointed to a path that didn't exist."
           }
         ]
       },
@@ -126,7 +126,7 @@
         "evidence": [
           {
             "file": "work/demo/how-we-worked.md",
-            "quote": "the first `gh issue view 2 --comments` printed nothing"
+            "quote": "the first `gh issue view 2 --comments` printed nothing, so the agent fetched the issue again with `--json`."
           }
         ]
       }
