@@ -1,0 +1,135 @@
+{
+  "group": "demo",
+  "pr": 4,
+  "sha": "63a3a0c090443a199062a29ef59a169e7edb277b",
+  "reportedAt": "2026-10-23T13:54:56.174Z",
+  "schemaVersion": 1,
+  "facts": {
+    "phase": "Exploring",
+    "draft": true,
+    "specReviewedAt": null,
+    "ci": {
+      "result": "pass",
+      "at": "2026-10-23T13:54:04Z"
+    },
+    "firstGreenAt": "2026-10-23T13:54:04Z",
+    "artifacts": {
+      "agentsMd": {
+        "present": false,
+        "firstSeenAt": null,
+        "lastChangedAt": null
+      },
+      "glossary": {
+        "present": true,
+        "firstSeenAt": "2026-10-23T15:53:01+02:00",
+        "lastChangedAt": "2026-10-23T15:53:01+02:00"
+      },
+      "spec": {
+        "present": false,
+        "firstSeenAt": null,
+        "lastChangedAt": null
+      },
+      "tickets": {
+        "present": false,
+        "firstSeenAt": null,
+        "lastChangedAt": null
+      },
+      "review": {
+        "present": false,
+        "firstSeenAt": null,
+        "lastChangedAt": null
+      },
+      "howWeWorked": {
+        "present": true,
+        "firstSeenAt": "2026-10-23T15:53:01+02:00",
+        "lastChangedAt": "2026-10-23T15:53:01+02:00"
+      }
+    },
+    "skillsWritten": [],
+    "areasTouched": {
+      "api": false,
+      "web": false,
+      "apiTests": false,
+      "webTests": false,
+      "agentContext": true,
+      "workingOut": true
+    },
+    "testsAdded": [],
+    "review": {
+      "rounds": 0,
+      "findings": {
+        "actOn": 0,
+        "consider": 0,
+        "noted": 0,
+        "dismissed": 0
+      }
+    },
+    "lastPushAt": "2026-10-23T15:53:01+02:00"
+  },
+  "judgements": {
+    "now": "Reading issue on allergens and pushing the first branch",
+    "notable": "At the keyboard, one person did everything",
+    "decisions": {
+      "join": {
+        "call": "open",
+        "line": "",
+        "evidence": []
+      },
+      "deadline": {
+        "call": "open",
+        "line": "",
+        "evidence": []
+      },
+      "multipleRestaurants": {
+        "call": "open",
+        "line": "",
+        "evidence": []
+      },
+      "editRights": {
+        "call": "open",
+        "line": "",
+        "evidence": []
+      },
+      "splitBill": {
+        "call": "open",
+        "line": "",
+        "evidence": []
+      },
+      "minimumOrderAndFee": {
+        "call": "open",
+        "line": "",
+        "evidence": []
+      },
+      "kitchenPerPerson": {
+        "call": "open",
+        "line": "",
+        "evidence": []
+      }
+    },
+    "acceptanceExamples": [],
+    "slices": [],
+    "reviewHeadline": null,
+    "agentGotWrong": [
+      {
+        "item": "The say-it-back link in .claude/skills pointed to a path that didn't exist",
+        "twice": false,
+        "evidence": [
+          {
+            "file": "work/demo/how-we-worked.md",
+            "quote": "the say-it-back link in `.claude/skills` pointed to a path that didn't exist"
+          }
+        ]
+      },
+      {
+        "item": "The first `gh issue view 2 --comments` printed nothing, so the issue was fetched again",
+        "twice": false,
+        "evidence": [
+          {
+            "file": "work/demo/how-we-worked.md",
+            "quote": "the first `gh issue view 2 --comments` printed nothing"
+          }
+        ]
+      }
+    ]
+  }
+}
