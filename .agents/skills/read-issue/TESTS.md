@@ -1,4 +1,4 @@
-Owner: schuyten-raccoons. Review: 20 Nov 2026.
+Owner: Schuyten. Review: 20 Nov 2026.
 
 Run each prompt in a fresh session, started at the repo root on a group base. ✅ means the skill behaved: it fired on a "should fire" prompt, or stayed quiet on a "should not fire" one. ❌ means it didn't.
 
