@@ -121,7 +121,7 @@ The times the reporter and the deck have to meet (for [Live-deck pipeline spike]
 > | 16:45 | Stand-up per group, and a look ahead to Day 2 |
 > | 17:00 | End |
 >
-> Throughout the day, the slides update live from the groups' pull requests. Overnight we prepare a retrospective from what the groups committed: their git history and the notes they write about how they worked. We don't use chat transcripts.
+> Not confirmed yet: throughout the day, the slides update live from the groups' pull requests. Overnight we prepare a retrospective from what the groups committed: their git history and the notes they write about how they worked. We don't use chat transcripts.
 >
 > **Day 2 (morning)**
 >
@@ -150,8 +150,4 @@ The times the reporter and the deck have to meet (for [Live-deck pipeline spike]
 >
 > **What we need from you:**
 >
-> 1. The participant list: name, role, product, GitHub username, operating system, and AI tool and IDE. We use it to mix the groups and to give everyone write access to the workshop repository.
-> 2. Who uses Visual Studio or Rider with Copilot Chat? Those IDEs don't read the shared agent instructions, so we'll ask those people to use VS Code or the Copilot CLI for the workshop.
-> 3. An active licence for each participant's AI tool.
-> 4. One room with three group tables and a screen everyone can see, plus wifi that allows GitHub and the AI tools' services.
-> 5. Lunch in the room on Day 1, and lunch together after the close on Day 2.
+> The participant list: name, role, product, GitHub username, (operating system, and AI tool and IDE).
