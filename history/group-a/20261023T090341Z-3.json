@@ -1,0 +1,114 @@
+{
+  "group": "group-a",
+  "pr": 3,
+  "sha": "43c2291f57f956dc8c997549b348b7aebee58335",
+  "reportedAt": "2026-10-23T09:03:41.332Z",
+  "schemaVersion": 1,
+  "facts": {
+    "phase": "Exploring",
+    "draft": true,
+    "specReviewedAt": null,
+    "ci": {
+      "result": "pass",
+      "at": "2026-10-23T08:46:22Z"
+    },
+    "firstGreenAt": "2026-10-23T08:35:36Z",
+    "artifacts": {
+      "agentsMd": {
+        "present": false,
+        "firstSeenAt": null,
+        "lastChangedAt": null
+      },
+      "glossary": {
+        "present": false,
+        "firstSeenAt": null,
+        "lastChangedAt": null
+      },
+      "spec": {
+        "present": false,
+        "firstSeenAt": null,
+        "lastChangedAt": null
+      },
+      "tickets": {
+        "present": false,
+        "firstSeenAt": null,
+        "lastChangedAt": null
+      },
+      "review": {
+        "present": false,
+        "firstSeenAt": null,
+        "lastChangedAt": null
+      },
+      "howWeWorked": {
+        "present": false,
+        "firstSeenAt": null,
+        "lastChangedAt": null
+      }
+    },
+    "skillsWritten": [],
+    "areasTouched": {
+      "api": false,
+      "web": false,
+      "apiTests": false,
+      "webTests": false,
+      "agentContext": false,
+      "workingOut": true
+    },
+    "testsAdded": [],
+    "review": {
+      "rounds": 0,
+      "findings": {
+        "actOn": 0,
+        "consider": 0,
+        "noted": 0,
+        "dismissed": 0
+      }
+    },
+    "lastPushAt": "2026-10-23T10:45:31+02:00"
+  },
+  "judgements": {
+    "now": "Adding a notes file to the working-out folder",
+    "notable": "",
+    "decisions": {
+      "join": {
+        "call": "open",
+        "line": "",
+        "evidence": []
+      },
+      "deadline": {
+        "call": "open",
+        "line": "",
+        "evidence": []
+      },
+      "multipleRestaurants": {
+        "call": "open",
+        "line": "",
+        "evidence": []
+      },
+      "editRights": {
+        "call": "open",
+        "line": "",
+        "evidence": []
+      },
+      "splitBill": {
+        "call": "open",
+        "line": "",
+        "evidence": []
+      },
+      "minimumOrderAndFee": {
+        "call": "open",
+        "line": "",
+        "evidence": []
+      },
+      "kitchenPerPerson": {
+        "call": "open",
+        "line": "",
+        "evidence": []
+      }
+    },
+    "acceptanceExamples": [],
+    "slices": [],
+    "reviewHeadline": null,
+    "agentGotWrong": []
+  }
+}
