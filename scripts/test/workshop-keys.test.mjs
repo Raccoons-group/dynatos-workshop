@@ -1,8 +1,5 @@
 import assert from "node:assert/strict";
-import fs from "node:fs";
-import path from "node:path";
 import { test } from "node:test";
-import { fileURLToPath } from "node:url";
 
 import {
   groupOfBranch,
@@ -29,15 +26,18 @@ test("reads a group base's keys", () => {
   });
 });
 
+// main's placeholders. Not read from the repo's own file: the cut writes real keys into it on every base.
+const main = `# This branch in the workshop
+
+Group: none
+Base branch: main
+Work branch: none
+Working-out: none
+Epic: none
+`;
+
 test("reads main's placeholders as no group", () => {
-  const root = path.resolve(
-    path.dirname(fileURLToPath(import.meta.url)),
-    "..",
-    "..",
-  );
-  const keys = parseWorkshopKeys(
-    fs.readFileSync(path.join(root, "docs", "agents", "workshop.md"), "utf8"),
-  );
+  const keys = parseWorkshopKeys(main);
 
   assert.equal(keys.group, null);
   assert.equal(keys.workingOut, null);
