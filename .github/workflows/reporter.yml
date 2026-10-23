@@ -67,9 +67,11 @@ jobs:
           fetch-depth: 0
           persist-credentials: false
 
+      # The scripts use only Node's built-ins. Without this, setup-node reads packageManager and looks for pnpm.
       - uses: actions/setup-node@v5
         with:
           node-version: 22
+          package-manager-cache: false
 
       - id: target
         name: Find the group whose card this is
@@ -141,9 +143,11 @@ jobs:
           path: .live-data
           fetch-depth: 0
 
+      # The scripts use only Node's built-ins. Without this, setup-node reads packageManager and looks for pnpm.
       - uses: actions/setup-node@v5
         with:
           node-version: 22
+          package-manager-cache: false
 
       - name: Validate, cap and publish the observation
         env:
