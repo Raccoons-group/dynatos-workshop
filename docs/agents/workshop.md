@@ -2,8 +2,8 @@
 
 The `open-pr` skill, the issue tracker and the live deck's reporter read these values. The coaches' cut script writes them on each group's base branch. On `main` they're placeholders.
 
-Group: none
-Base branch: main
-Work branch: none
-Working-out: none
-Epic: none
+Group: demo
+Base branch: demo/main
+Work branch: demo/allergens
+Working-out: work/demo/
+Epic: #2
