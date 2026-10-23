@@ -1,5 +1,7 @@
 # Build handoff
 
+**The repo:** https://github.com/Raccoons-group/dynatos-workshop, public by choice (unlimited Actions minutes). Its history includes the old case brief's hint, so anyone who digs can find it. CI is green on `main`. Point your local `origin` at that URL; the old `Schuyten/dynatos-workshop` address only redirects.
+
 **Status (22 Oct 2026):** all 18 build tickets are built. Fourteen are done. Four (03, 08, 10, 17) are built and tested locally, and wait only on the steps below that need your accounts: the key, the push, the real cut, the rehearsal. Ticket 06 is marked done, but one criterion is still open: its trigger runs haven't happened (step 2). Nothing is committed yet.
 
 Tests:
@@ -20,7 +22,7 @@ The one stray, the deck's `.claude/launch.json`, is now on the coach-only list.
 ## In order
 
 1. **Check, then commit and push `main`.** Run `node scripts/leak-check.mjs` and `pnpm skills:check` first. The coach notes and the leak check's term list (`.scratch/workshop/coach/leak-terms.txt`, new) stay gitignored. Share both with Sander outside git.
-2. **Sign the `claude` CLI in.** `claude auth status` says it's signed out. Ticket 06's trigger runs (the `TESTS.md` files in `read-issue`, `open-pr`, `how-we-worked` and `tdd`) haven't run yet for that reason, and `pnpm report:local` and `pnpm retro` need it too. Run each `TESTS.md` in Claude Code and in a second tool.
+2. **Install `gh` and sign it and the `claude` CLI in.** Install with `brew install gh`, then sign in with `gh auth login`: `pnpm live:sync`, `demo:reset`, `report:local` and `retro` all call it. `claude auth status` says the CLI is signed out. Ticket 06's trigger runs (the `TESTS.md` files in `read-issue`, `open-pr`, `how-we-worked` and `tdd`) haven't run yet for that reason, and `pnpm report:local` and `pnpm retro` need it too. Run each `TESTS.md` in Claude Code and in a second tool.
 3. **GitHub, as you:**
    - repo settings: merge commits only, no auto-deleting head branches
    - labels: `spec-reviewed`, `epic` and `demo`
